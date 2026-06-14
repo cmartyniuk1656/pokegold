@@ -1,10 +1,10 @@
-	db "EVOLUTION@" ; species name
+	db "HOUSECAT@" ; species name
 	dw 100, 140 ; height, weight
 
-	db   "Its irregularly"
-	next "configured DNA is"
-	next "affected by its"
+	db   "A beloved house"
+	next "cat whose calm"
+	next "purr puts people"
 
-	page "surroundings. It"
-	next "evolves if its en-"
-	next "vironment changes.@"
+	page "at ease. It is"
+	next "known as LITTLE"
+	next "by its family.@"

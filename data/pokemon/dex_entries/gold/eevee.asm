@@ -1,10 +1,10 @@
-	db "EVOLUTION@" ; species name
+	db "HOUSECAT@" ; species name
 	dw 100, 140 ; height, weight
 
-	db   "It has the ability"
-	next "to alter the com-"
-	next "position of its"
+	db   "LITTLE is a sweet"
+	next "cat with bright"
+	next "watchful eyes."
 
-	page "body to suit its"
-	next "surrounding envi-"
-	next "ronment.@"
+	page "It naps nearby"
+	next "and brings warmth"
+	next "to every room.@"

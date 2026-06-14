@@ -1,10 +1,10 @@
-	db "FLAME@" ; species name
+	db "EMBERCAT@" ; species name
 	dw 211, 550 ; height, weight
 
-	db   "It fluffs out its"
-	next "fur collar to cool"
-	next "down its body"
+	db   "A fiery form of"
+	next "LITTLE. Its fur"
+	next "is soft but warm."
 
-	page "temperature, which"
-	next "can reach 1,650"
-	next "degrees.@"
+	page "It curls up close"
+	next "and keeps its"
+	next "family safe.@"

@@ -963,7 +963,7 @@ LovelyMailDesc:
 	next "(HOLD)@"
 
 EonMailDesc:
-	db   "EEVEE-print MAIL."
+	db   "LITTLE-print MAIL."
 	next "(HOLD)@"
 
 MorphMailDesc:

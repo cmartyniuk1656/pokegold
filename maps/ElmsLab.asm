@@ -17,6 +17,12 @@ ElmsLab_MapScripts:
 	scene_const SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, ElmsLabHideExtraStartersCallback
+
+ElmsLabHideExtraStartersCallback:
+	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	endcallback
 
 ElmsLabMeetElmScene:
 	sdefer ElmsLabWalkUpToElmScript
@@ -121,12 +127,12 @@ CyndaquilPokeBallScript:
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
-	pokepic CYNDAQUIL
-	cry CYNDAQUIL
+	pokepic FLAREON
+	cry FLAREON
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeCyndaquilText
+	writetext TakeFlittleText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL1
@@ -134,12 +140,12 @@ CyndaquilPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	getmonname STRING_BUFFER_3, CYNDAQUIL
+	getmonname STRING_BUFFER_3, FLAREON
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	promptbutton
-	givepoke CYNDAQUIL, 5, BERRY
+	givepoke FLAREON, 5, BERRY
 	closetext
 	readvar VAR_FACING
 	ifequal RIGHT, ElmDirectionsScript
@@ -701,11 +707,11 @@ ElmText_Intro:
 	line "#MON for a"
 	cont "partner."
 
-	para "They're all rare"
-	line "#MON that we"
-	cont "just found."
+	para "This one is a"
+	line "rare #MON that"
+	cont "we just found."
 
-	para "Go on. Pick one!"
+	para "Go on. Take it!"
 	done
 
 ElmText_LetYourMonBattleIt:
@@ -719,10 +725,10 @@ LabWhereGoingText:
 	line "are you going?"
 	done
 
-TakeCyndaquilText:
+TakeFlittleText:
 	text "ELM: You'll take"
-	line "CYNDAQUIL, the"
-	cont "fire #MON?"
+	line "FLITTLE, the"
+	cont "embercat #MON?"
 	done
 
 TakeTotodileText:
@@ -748,7 +754,7 @@ DidntChooseStarterText:
 ChoseStarterText:
 	text "ELM: I think"
 	line "that's a great"
-	cont "#MON too!"
+	cont "partner!"
 	done
 
 ReceivedStarterText:
