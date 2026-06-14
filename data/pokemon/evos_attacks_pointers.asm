@@ -136,7 +136,7 @@ EvosAttacksPointers::
 	dw DittoEvosAttacks
 	dw EeveeEvosAttacks
 	dw VaporeonEvosAttacks
-	dw JolteonEvosAttacks
+	dw JoltleEvosAttacks
 	dw FlareonEvosAttacks
 	dw PorygonEvosAttacks
 	dw OmanyteEvosAttacks

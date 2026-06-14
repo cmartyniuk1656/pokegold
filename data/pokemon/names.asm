@@ -134,7 +134,7 @@ PokemonNames::
 	dname "DITTO"
 	dname "LITTLE"
 	dname "VAPOREON"
-	dname "JOLTEON"
+	dname "JOLTLE"
 	dname "FLITTLE"
 	dname "PORYGON"
 	dname "OMANYTE"

@@ -868,7 +868,7 @@ CooltrainerFGroup:
 	db 26, EEVEE
 	db 22, FLAREON
 	db 22, VAPOREON
-	db 22, JOLTEON
+	db 22, JOLTLE
 	db -1 ; end
 
 	; COOLTRAINERF (2)
@@ -3058,7 +3058,7 @@ KimonoGirlGroup:
 
 	; KIMONO_GIRL (6)
 	db "MIKI@", TRAINERTYPE_NORMAL
-	db 17, JOLTEON
+	db 17, JOLTLE
 	db -1 ; end
 
 TwinsGroup:

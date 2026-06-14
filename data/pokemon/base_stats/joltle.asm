@@ -1,4 +1,4 @@
-	db JOLTEON ; 135
+	db JOLTLE ; 135
 
 	db  65,  65,  60, 130, 110,  95
 	;   hp  atk  def  spd  sat  sdf
@@ -12,9 +12,9 @@
 	db 35 ; step cycles to hatch
 	db 5 ; unknown 2
 IF DEF(_GOLD)
-	INCBIN "gfx/pokemon/jolteon/front_gold.dimensions"
+	INCBIN "gfx/pokemon/joltle/front_gold.dimensions"
 ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/jolteon/front_silver.dimensions"
+	INCBIN "gfx/pokemon/joltle/front_silver.dimensions"
 ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_FAST ; growth rate

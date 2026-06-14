@@ -15,7 +15,7 @@ NewGame:
 
 IF DEF(_DEBUG)
 DebugRoom:
-	farcall _DebugRoom
+	farcall DebugRoom_Open
 	ret
 ENDC
 

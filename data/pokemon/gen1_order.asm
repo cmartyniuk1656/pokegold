@@ -103,7 +103,7 @@ Pokered_MonIndices:
 	db WIGGLYTUFF
 	db EEVEE
 	db FLAREON
-	db JOLTEON
+	db JOLTLE
 	db VAPOREON
 	db MACHOP
 	db ZUBAT

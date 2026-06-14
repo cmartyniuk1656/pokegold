@@ -183,7 +183,7 @@ NewPokedexOrder:
 	db TANGELA
 	db EEVEE
 	db VAPOREON
-	db JOLTEON
+	db JOLTLE
 	db FLAREON
 	db ESPEON
 	db UMBREON
