@@ -9,6 +9,9 @@
 	const STARTMENUITEM_EXIT     ; 6
 	const STARTMENUITEM_POKEGEAR ; 7
 	const STARTMENUITEM_QUIT     ; 8
+IF DEF(_DEBUG)
+	const STARTMENUITEM_DEBUG    ; 9
+ENDC
 
 StartMenu::
 	call ClearWindowData
@@ -185,6 +188,9 @@ StartMenu::
 	dw StartMenu_Exit,     .ExitString,     .ExitDesc
 	dw StartMenu_Pokegear, .PokegearString, .PokegearDesc
 	dw StartMenu_Quit,     .QuitString,     .QuitDesc
+IF DEF(_DEBUG)
+	dw StartMenu_Debug,    .DebugString,    .DebugDesc
+ENDC
 
 .PokedexString:  db "#DEX@"
 .PartyString:    db "#MON@"
@@ -195,6 +201,9 @@ StartMenu::
 .ExitString:     db "EXIT@"
 .PokegearString: db "<POKE>GEAR@"
 .QuitString:     db "QUIT@"
+IF DEF(_DEBUG)
+.DebugString:    db "DEBUG@"
+ENDC
 
 .PokedexDesc:
 	db   "#MON"
@@ -231,6 +240,12 @@ StartMenu::
 .QuitDesc:
 	db   "Quit and"
 	next "be judged.@"
+
+IF DEF(_DEBUG)
+.DebugDesc:
+	db   "Debug"
+	next "tools@"
+ENDC
 
 .OpenMenu:
 	ld a, [wMenuSelection]
@@ -337,6 +352,14 @@ endr
 
 	ld a, STARTMENUITEM_OPTION
 	call .AppendMenuList
+IF DEF(_DEBUG)
+	ld a, [wLinkMode]
+	and a
+	jr nz, .no_debug
+	ld a, STARTMENUITEM_DEBUG
+	call .AppendMenuList
+.no_debug
+ENDC
 	ld a, STARTMENUITEM_EXIT
 	call .AppendMenuList
 	ld a, c
@@ -448,6 +471,15 @@ StartMenu_Option:
 	farcall Option
 	ld a, 6
 	ret
+
+IF DEF(_DEBUG)
+StartMenu_Debug:
+	call FadeToMenu
+	farcall DebugRoomMenu_DexGet
+	call CloseSubmenu
+	ld a, 0
+	ret
+ENDC
 
 StartMenu_Status:
 ; Player status.

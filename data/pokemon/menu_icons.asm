@@ -136,7 +136,7 @@ MonMenuIcons:
 	db ICON_BLOB        ; DITTO
 	db ICON_FOX         ; EEVEE
 	db ICON_FOX         ; VAPOREON
-	db ICON_FOX         ; JOLTEON
+	db ICON_FOX         ; JOLTLE
 	db ICON_FOX         ; FLAREON
 	db ICON_VOLTORB     ; PORYGON
 	db ICON_SHELL       ; OMANYTE

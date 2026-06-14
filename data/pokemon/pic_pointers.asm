@@ -137,7 +137,7 @@ PokemonPicPointers::
 	dba_pics DittoFrontpic, DittoBackpic
 	dba_pics EeveeFrontpic, EeveeBackpic
 	dba_pics VaporeonFrontpic, VaporeonBackpic
-	dba_pics JolteonFrontpic, JolteonBackpic
+	dba_pics JoltleFrontpic, JoltleBackpic
 	dba_pics FlareonFrontpic, FlareonBackpic
 	dba_pics PorygonFrontpic, PorygonBackpic
 	dba_pics OmanyteFrontpic, OmanyteBackpic

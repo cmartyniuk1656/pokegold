@@ -148,7 +148,7 @@
 	const DITTO      ; 84
 	const EEVEE      ; 85
 	const VAPOREON   ; 86
-	const JOLTEON    ; 87
+	const JOLTLE     ; 87
 	const FLAREON    ; 88
 	const PORYGON    ; 89
 	const OMANYTE    ; 8a

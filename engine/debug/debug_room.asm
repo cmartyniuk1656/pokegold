@@ -19,12 +19,23 @@ DEF DEBUGROOMMENU_NUM_PAGES EQU const_value
 	const DEBUGROOMMENUITEM_BTL_REC_CLR  ; a
 	const DEBUGROOMMENUITEM_POKEDEX_CLR  ; b
 	const DEBUGROOMMENUITEM_HALT_CHK_CLR ; c
+	const DEBUGROOMMENUITEM_DEX_GET      ; d
 
 _DebugRoom:
 	ldh a, [hJoyDown]
 	and PAD_SELECT | PAD_START
 	cp PAD_SELECT | PAD_START
 	ret nz
+DebugRoom_Open:
+	ldh a, [hInMenu]
+	push af
+	ld a, TRUE
+	ldh [hInMenu], a
+	xor a
+	ldh [hBGMapMode], a
+	call ClearBGPalettes
+	call ClearTilemap
+	call LoadFontsExtra
 	ldh a, [hDebugRoomMenuPage]
 	push af
 	xor a
@@ -57,6 +68,8 @@ _DebugRoom:
 .done
 	pop af
 	ldh [hDebugRoomMenuPage], a
+	pop af
+	ldh [hInMenu], a
 	ret
 
 .MenuHeader:
@@ -87,6 +100,7 @@ _DebugRoom:
 	db "BTL REC CLR@"
 	db "#DEX CLR@"
 	db "HALT CHK CLR@"
+	db "DEX GET!@"
 
 .Jumptable:
 ; entries correspond to DEBUGROOMMENUITEM_* constants
@@ -103,6 +117,7 @@ _DebugRoom:
 	dw DebugRoomMenu_BtlRecClr
 	dw DebugRoomMenu_PokedexClr
 	dw DebugRoomMenu_HaltChkClr
+	dw DebugRoomMenu_DexGet
 
 .MenuItems:
 ; entries correspond to DEBUGROOMMENU_* constants
@@ -120,8 +135,9 @@ _DebugRoom:
 	db -1
 
 	; DEBUGROOMMENU_PAGE_2
-	db 6
+	db 7
 	db DEBUGROOMMENUITEM_POKEMON_GET
+	db DEBUGROOMMENUITEM_DEX_GET
 	db DEBUGROOMMENUITEM_ITEM_GET
 	db DEBUGROOMMENUITEM_POKEDEX_COMP
 	db DEBUGROOMMENUITEM_POKEDEX_CLR
@@ -322,6 +338,100 @@ DebugRoomMenu_PokedexClr:
 	call CloseSRAM
 	call DebugRoom_SaveChecksum
 	ret
+
+DebugRoomMenu_DexGet::
+	call LoadStandardMenuHeader
+	ld hl, .MenuHeader
+	call CopyMenuHeader
+	xor a
+	ldh [hBGMapMode], a
+	call ClearTilemap
+	call InitScrollingMenu
+	xor a
+	ld [wMenuScrollPosition], a
+	inc a
+	ld [wMenuCursorPosition], a
+	call ScrollingMenu
+	call CloseWindow
+	ld a, [wMenuJoypad]
+	cp PAD_B
+	ret z
+	call .AddSelectedPokemon
+	ret
+
+.MenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db SCROLLINGMENU_DISPLAY_ARROWS ; flags
+	db 8, 0 ; rows, columns
+	db SCROLLINGMENU_ITEMS_NORMAL ; item format
+	dba .PokemonList
+	dba .PlacePokemonName
+	dba NULL
+	dba NULL
+
+.PokemonList:
+	db NUM_POKEMON
+for x, NUM_POKEMON
+	db x + 1
+endr
+	db -1
+
+.PlacePokemonName:
+	ld a, [wMenuSelection]
+	ld [wNamedObjectIndex], a
+	push de
+	call GetPokemonName
+	pop hl
+	ld de, wStringBuffer1
+	call PlaceString
+	ret
+
+.AddSelectedPokemon:
+	ld a, [wPartyCount]
+	cp PARTY_LENGTH
+	jr nc, .party_full
+	ld a, [wMenuSelection]
+	ld [wCurPartySpecies], a
+	ld [wNamedObjectIndex], a
+	call GetPokemonName
+	ld hl, wStringBuffer1
+	ld de, wMonOrItemNameBuffer
+	ld bc, MON_NAME_LENGTH
+	call CopyBytes
+	xor a ; PARTYMON
+	ld [wMonType], a
+	ld [wBattleMode], a
+	ld [wCurItem], a
+	ld a, 30
+	ld [wCurPartyLevel], a
+	predef TryAddMonToParty
+	jr nc, .party_full
+	ld hl, .AddedText
+	jr .show_text
+
+.party_full
+	ld hl, .PartyFullText
+
+.show_text
+	call MenuTextbox
+	call DebugRoom_JoyWaitABSelect
+	call CloseWindow
+	ret
+
+.AddedText:
+	text_ram wMonOrItemNameBuffer
+	text " joined"
+	line "the party."
+	done
+
+.PartyFullText:
+	text "Party is full!"
+	done
 
 DebugRoomMenu_TimerReset:
 	call YesNoBox

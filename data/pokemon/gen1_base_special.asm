@@ -136,7 +136,7 @@ KantoMonSpecials:
 	db  48 ; DITTO
 	db  65 ; EEVEE
 	db 110 ; VAPOREON
-	db 110 ; JOLTEON
+	db 110 ; JOLTLE
 	db 110 ; FLAREON
 	db  75 ; PORYGON
 	db  90 ; OMANYTE
