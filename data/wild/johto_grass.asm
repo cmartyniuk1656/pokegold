@@ -2293,27 +2293,27 @@ JohtoGrassWildMons:
 	; morn
 	db 3, GEODUDE
 	db 2, SPEAROW
-	db 2, RATTATA
 	db 2, GEODUDE
-	db 3, SPEAROW
-	db 3, JIGGLYPUFF
-	db 5, JIGGLYPUFF
+	db 2, RATTATA
+	db 2, PHANPY
+	db 3, RATTATA
+	db 3, RATTATA
 	; day
 	db 3, GEODUDE
 	db 2, SPEAROW
-	db 2, RATTATA
 	db 2, GEODUDE
-	db 3, SPEAROW
-	db 3, JIGGLYPUFF
-	db 5, JIGGLYPUFF
+	db 2, RATTATA
+	db 3, PHANPY
+	db 3, RATTATA
+	db 3, RATTATA
 	; nite
 	db 3, GEODUDE
-	db 3, RATTATA
 	db 2, RATTATA
 	db 2, GEODUDE
-	db 4, GEODUDE
-	db 3, JIGGLYPUFF
-	db 5, JIGGLYPUFF
+	db 3, RATTATA
+	db 2, RATTATA
+	db 3, RATTATA
+	db 3, RATTATA
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_OUTSIDE
