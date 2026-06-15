@@ -134,10 +134,10 @@ MonMenuIcons:
 	db ICON_GYARADOS    ; GYARADOS
 	db ICON_LAPRAS      ; LAPRAS
 	db ICON_BLOB        ; DITTO
-	db ICON_FOX         ; EEVEE
-	db ICON_FOX         ; VAPOREON
+	db ICON_FOX         ; LITTLE
+	db ICON_FOX         ; LILPOREON
 	db ICON_FOX         ; JOLTLE
-	db ICON_FOX         ; FLAREON
+	db ICON_FOX         ; FLITTLE
 	db ICON_VOLTORB     ; PORYGON
 	db ICON_SHELL       ; OMANYTE
 	db ICON_SHELL       ; OMASTAR
@@ -197,8 +197,8 @@ MonMenuIcons:
 	db ICON_BUG         ; YANMA
 	db ICON_MONSTER     ; WOOPER
 	db ICON_MONSTER     ; QUAGSIRE
-	db ICON_FOX         ; ESPEON
-	db ICON_FOX         ; UMBREON
+	db ICON_FOX         ; LITEON
+	db ICON_FOX         ; LUMBREON
 	db ICON_BIRD        ; MURKROW
 	db ICON_SLOWPOKE    ; SLOWKING
 	db ICON_GHOST       ; MISDREAVUS

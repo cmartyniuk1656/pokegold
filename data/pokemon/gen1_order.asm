@@ -101,10 +101,10 @@ Pokered_MonIndices:
 	db OMASTAR
 	db JIGGLYPUFF
 	db WIGGLYTUFF
-	db EEVEE
-	db FLAREON
+	db LITTLE
+	db FLITTLE
 	db JOLTLE
-	db VAPOREON
+	db LILPOREON
 	db MACHOP
 	db ZUBAT
 	db EKANS
@@ -235,8 +235,8 @@ Pokered_MonIndices:
 	db YANMA
 	db WOOPER
 	db QUAGSIRE
-	db ESPEON
-	db UMBREON
+	db LITEON
+	db LUMBREON
 	db MURKROW
 	db SLOWKING
 	db MISDREAVUS

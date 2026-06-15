@@ -1,4 +1,4 @@
-	db FLAREON ; 136
+	db FLITTLE ; 136
 
 	db  65, 130,  60,  65,  95, 110
 	;   hp  atk  def  spd  sat  sdf
@@ -12,9 +12,9 @@
 	db 35 ; step cycles to hatch
 	db 5 ; unknown 2
 IF DEF(_GOLD)
-	INCBIN "gfx/pokemon/flareon/front_gold.dimensions"
+	INCBIN "gfx/pokemon/flittle/front_gold.dimensions"
 ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/flareon/front_silver.dimensions"
+	INCBIN "gfx/pokemon/flittle/front_silver.dimensions"
 ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -184,6 +184,18 @@ MirrorMove:
 	mirrormove
 	endmove
 
+DemandFood:
+	checkobedience
+	checkdemandfood
+	usedmovetext
+	doturn
+	demandfoodheal
+	attackup
+	statupmessage
+	demandfoodmarkboost
+	statupfailtext
+	endmove
+
 AttackUp:
 	checkobedience
 	usedmovetext

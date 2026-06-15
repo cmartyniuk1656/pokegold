@@ -22,11 +22,11 @@ EcruteakMartGrannyScript:
 
 EcruteakMartSuperNerdText:
 	text "My LITTLE evolved"
-	line "into an ESPEON."
+	line "into a LITEON."
 
 	para "But my friend's"
 	line "LITTLE turned into"
-	cont "an UMBREON."
+	cont "a LUMBREON."
 
 	para "I wonder why? We"
 	line "both were raising"

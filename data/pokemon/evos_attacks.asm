@@ -1789,13 +1789,14 @@ DittoEvosAttacks:
 	db 1, TRANSFORM
 	db 0 ; no more level-up moves
 
-EeveeEvosAttacks:
+LittleEvosAttacks:
 	db EVOLVE_ITEM, THUNDERSTONE, JOLTLE
-	db EVOLVE_ITEM, WATER_STONE, VAPOREON
-	db EVOLVE_ITEM, FIRE_STONE, FLAREON
-	db EVOLVE_HAPPINESS, TR_MORNDAY, ESPEON
-	db EVOLVE_HAPPINESS, TR_NITE, UMBREON
+	db EVOLVE_ITEM, WATER_STONE, LILPOREON
+	db EVOLVE_ITEM, FIRE_STONE, FLITTLE
+	db EVOLVE_HAPPINESS, TR_MORNDAY, LITEON
+	db EVOLVE_HAPPINESS, TR_NITE, LUMBREON
 	db 0 ; no more evolutions
+	db 1, DEMAND_FOOD
 	db 1, TACKLE
 	db 1, TAIL_WHIP
 	db 8, SAND_ATTACK
@@ -1806,7 +1807,7 @@ EeveeEvosAttacks:
 	db 42, TAKE_DOWN
 	db 0 ; no more level-up moves
 
-VaporeonEvosAttacks:
+LilporeonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP
@@ -1834,7 +1835,7 @@ JoltleEvosAttacks:
 	db 52, THUNDER
 	db 0 ; no more level-up moves
 
-FlareonEvosAttacks:
+FlittleEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP
@@ -2636,7 +2637,7 @@ QuagsireEvosAttacks:
 	db 59, HAZE
 	db 0 ; no more level-up moves
 
-EspeonEvosAttacks:
+LiteonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP
@@ -2650,7 +2651,7 @@ EspeonEvosAttacks:
 	db 52, MORNING_SUN
 	db 0 ; no more level-up moves
 
-UmbreonEvosAttacks:
+LumbreonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP

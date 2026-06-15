@@ -146,10 +146,10 @@
 	const GYARADOS   ; 82
 	const LAPRAS     ; 83
 	const DITTO      ; 84
-	const EEVEE      ; 85
-	const VAPOREON   ; 86
+	const LITTLE     ; 85
+	const LILPOREON  ; 86
 	const JOLTLE     ; 87
-	const FLAREON    ; 88
+	const FLITTLE    ; 88
 	const PORYGON    ; 89
 	const OMANYTE    ; 8a
 	const OMASTAR    ; 8b
@@ -210,8 +210,8 @@ DEF JOHTO_POKEMON EQU const_value
 	const YANMA      ; c1
 	const WOOPER     ; c2
 	const QUAGSIRE   ; c3
-	const ESPEON     ; c4
-	const UMBREON    ; c5
+	const LITEON     ; c4
+	const LUMBREON   ; c5
 	const MURKROW    ; c6
 	const SLOWKING   ; c7
 	const MISDREAVUS ; c8

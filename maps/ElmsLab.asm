@@ -127,12 +127,12 @@ CyndaquilPokeBallScript:
 	iftrue LookAtElmPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
-	pokepic FLAREON
-	cry FLAREON
+	pokepic LITTLE
+	cry LITTLE
 	waitbutton
 	closepokepic
 	opentext
-	writetext TakeFlittleText
+	writetext TakeLittleText
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL1
@@ -140,12 +140,12 @@ CyndaquilPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	getmonname STRING_BUFFER_3, FLAREON
+	getmonname STRING_BUFFER_3, LITTLE
 	writetext ReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	promptbutton
-	givepoke FLAREON, 5, BERRY
+	givepoke LITTLE, 5, BERRY
 	closetext
 	readvar VAR_FACING
 	ifequal RIGHT, ElmDirectionsScript
@@ -725,10 +725,10 @@ LabWhereGoingText:
 	line "are you going?"
 	done
 
-TakeFlittleText:
+TakeLittleText:
 	text "ELM: You'll take"
-	line "FLITTLE, the"
-	cont "embercat #MON?"
+	line "LITTLE, the"
+	cont "evolution #MON?"
 	done
 
 TakeTotodileText:

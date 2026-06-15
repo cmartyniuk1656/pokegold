@@ -1,4 +1,4 @@
-	db VAPOREON ; 134
+	db LILPOREON ; 134
 
 	db 130,  65,  60,  65, 110,  95
 	;   hp  atk  def  spd  sat  sdf
@@ -12,9 +12,9 @@
 	db 35 ; step cycles to hatch
 	db 5 ; unknown 2
 IF DEF(_GOLD)
-	INCBIN "gfx/pokemon/vaporeon/front_gold.dimensions"
+	INCBIN "gfx/pokemon/lilporeon/front_gold.dimensions"
 ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/vaporeon/front_silver.dimensions"
+	INCBIN "gfx/pokemon/lilporeon/front_silver.dimensions"
 ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_FAST ; growth rate

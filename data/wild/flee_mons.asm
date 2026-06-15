@@ -6,12 +6,12 @@ SometimesFleeMons:
 	db GRIMER
 	db TANGELA
 	db MR__MIME
-	db EEVEE
+	db LITTLE
 	db PORYGON
 	db DRATINI
 	db DRAGONAIR
 	db TOGETIC
-	db UMBREON
+	db LUMBREON
 	db UNOWN
 	db SNUBBULL
 	db HERACROSS

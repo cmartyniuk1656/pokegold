@@ -253,8 +253,8 @@ BattleAnimations::
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
+	dw BattleAnim_DemandFood
 	assert_table_length NUM_ATTACKS + 1
-	dw BattleAnim_Dummy
 	dw BattleAnim_Dummy
 	dw BattleAnim_Dummy
 	dw BattleAnim_SweetScent2
@@ -1622,6 +1622,24 @@ BattleAnim_DoubleTeam:
 	anim_ret
 
 BattleAnim_Recover:
+	anim_1gfx BATTLE_ANIM_GFX_BUBBLE
+	anim_call BattleAnim_TargetObj_1Row
+	anim_sound 0, 0, SFX_FULL_HEAL
+	anim_bgeffect BATTLE_BG_EFFECT_FADE_MON_TO_LIGHT_REPEATING, $0, BG_EFFECT_USER, $40
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $30
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $31
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $32
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $33
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $34
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $35
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $36
+	anim_obj BATTLE_ANIM_OBJ_RECOVER, 44, 88, $37
+	anim_wait 64
+	anim_incbgeffect BATTLE_BG_EFFECT_FADE_MON_TO_LIGHT_REPEATING
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+BattleAnim_DemandFood:
 	anim_1gfx BATTLE_ANIM_GFX_BUBBLE
 	anim_call BattleAnim_TargetObj_1Row
 	anim_sound 0, 0, SFX_FULL_HEAL

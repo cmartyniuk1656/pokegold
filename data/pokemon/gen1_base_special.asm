@@ -134,10 +134,10 @@ KantoMonSpecials:
 	db 100 ; GYARADOS
 	db  95 ; LAPRAS
 	db  48 ; DITTO
-	db  65 ; EEVEE
-	db 110 ; VAPOREON
+	db  65 ; LITTLE
+	db 110 ; LILPOREON
 	db 110 ; JOLTLE
-	db 110 ; FLAREON
+	db 110 ; FLITTLE
 	db  75 ; PORYGON
 	db  90 ; OMANYTE
 	db 115 ; OMASTAR

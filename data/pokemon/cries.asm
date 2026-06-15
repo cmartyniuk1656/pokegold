@@ -138,10 +138,10 @@ PokemonCries::
 	mon_cry CRY_EKANS,         0,  256 ; GYARADOS
 	mon_cry CRY_LAPRAS,        0,  256 ; LAPRAS
 	mon_cry CRY_PIDGEY,      255,  383 ; DITTO
-	mon_cry CRY_VENONAT,     136,  224 ; EEVEE
-	mon_cry CRY_VENONAT,     170,  383 ; VAPOREON
+	mon_cry CRY_VENONAT,     136,  224 ; LITTLE
+	mon_cry CRY_VENONAT,     170,  383 ; LILPOREON
 	mon_cry CRY_VENONAT,      61,  256 ; JOLTLE
-	mon_cry CRY_VENONAT,      16,  160 ; FLAREON
+	mon_cry CRY_VENONAT,      16,  160 ; FLITTLE
 	mon_cry CRY_WEEPINBELL,  170,  383 ; PORYGON
 	mon_cry CRY_GROWLITHE,   240,  129 ; OMANYTE
 	mon_cry CRY_GROWLITHE,   255,  192 ; OMASTAR
@@ -201,8 +201,8 @@ PokemonCries::
 	mon_cry CRY_TOTODILE,     49,  200 ; YANMA
 	mon_cry CRY_WOOPER,      147,  175 ; WOOPER
 	mon_cry CRY_WOOPER,     -198,  320 ; QUAGSIRE
-	mon_cry CRY_AIPOM,       162,  320 ; ESPEON
-	mon_cry CRY_VENONAT,    -233,  240 ; UMBREON
+	mon_cry CRY_AIPOM,       162,  320 ; LITEON
+	mon_cry CRY_VENONAT,    -233,  240 ; LUMBREON
 	mon_cry CRY_MARILL,      -31,  384 ; MURKROW
 	mon_cry CRY_SLOWKING,    260,  512 ; SLOWKING
 	mon_cry CRY_HOOTHOOT,    304,  232 ; MISDREAVUS

@@ -692,6 +692,15 @@ DayCare_InitBreeding:
 	ld [hl], a
 
 .SkipDVs:
+	ld a, [wEggMonSpecies]
+	cp LITTLE
+	jr nz, .done_little_dvs
+	ld hl, wEggMonDVs
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+
+.done_little_dvs
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, NAME_LENGTH

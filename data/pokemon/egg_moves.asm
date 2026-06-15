@@ -401,7 +401,7 @@ LaprasEggMoves:
 	db FORESIGHT
 	db -1 ; end
 
-EeveeEggMoves:
+LittleEggMoves:
 	db FLAIL
 	db CHARM
 	db -1 ; end

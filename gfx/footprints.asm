@@ -304,19 +304,19 @@ INCBIN "gfx/footprints/magikarp.1bpp",   footprint_top
 INCBIN "gfx/footprints/gyarados.1bpp",   footprint_top
 INCBIN "gfx/footprints/lapras.1bpp",     footprint_top
 INCBIN "gfx/footprints/ditto.1bpp",      footprint_top
-INCBIN "gfx/footprints/eevee.1bpp",      footprint_top
-INCBIN "gfx/footprints/vaporeon.1bpp",   footprint_top
+INCBIN "gfx/footprints/little.1bpp",     footprint_top
+INCBIN "gfx/footprints/lilporeon.1bpp",  footprint_top
 INCBIN "gfx/footprints/joltle.1bpp",     footprint_top
-INCBIN "gfx/footprints/flareon.1bpp",    footprint_top
+INCBIN "gfx/footprints/flittle.1bpp",    footprint_top
 ; 129-136 bottom halves
 INCBIN "gfx/footprints/magikarp.1bpp",   footprint_bottom
 INCBIN "gfx/footprints/gyarados.1bpp",   footprint_bottom
 INCBIN "gfx/footprints/lapras.1bpp",     footprint_bottom
 INCBIN "gfx/footprints/ditto.1bpp",      footprint_bottom
-INCBIN "gfx/footprints/eevee.1bpp",      footprint_bottom
-INCBIN "gfx/footprints/vaporeon.1bpp",   footprint_bottom
+INCBIN "gfx/footprints/little.1bpp",     footprint_bottom
+INCBIN "gfx/footprints/lilporeon.1bpp",  footprint_bottom
 INCBIN "gfx/footprints/joltle.1bpp",     footprint_bottom
-INCBIN "gfx/footprints/flareon.1bpp",    footprint_bottom
+INCBIN "gfx/footprints/flittle.1bpp",    footprint_bottom
 ; 137-144 top halves
 INCBIN "gfx/footprints/porygon.1bpp",    footprint_top
 INCBIN "gfx/footprints/omanyte.1bpp",    footprint_top
@@ -447,8 +447,8 @@ INCBIN "gfx/footprints/sunflora.1bpp",   footprint_bottom
 INCBIN "gfx/footprints/yanma.1bpp",      footprint_top
 INCBIN "gfx/footprints/wooper.1bpp",     footprint_top
 INCBIN "gfx/footprints/quagsire.1bpp",   footprint_top
-INCBIN "gfx/footprints/espeon.1bpp",     footprint_top
-INCBIN "gfx/footprints/umbreon.1bpp",    footprint_top
+INCBIN "gfx/footprints/liteon.1bpp",     footprint_top
+INCBIN "gfx/footprints/lumbreon.1bpp",   footprint_top
 INCBIN "gfx/footprints/murkrow.1bpp",    footprint_top
 INCBIN "gfx/footprints/slowking.1bpp",   footprint_top
 INCBIN "gfx/footprints/misdreavus.1bpp", footprint_top
@@ -456,8 +456,8 @@ INCBIN "gfx/footprints/misdreavus.1bpp", footprint_top
 INCBIN "gfx/footprints/yanma.1bpp",      footprint_bottom
 INCBIN "gfx/footprints/wooper.1bpp",     footprint_bottom
 INCBIN "gfx/footprints/quagsire.1bpp",   footprint_bottom
-INCBIN "gfx/footprints/espeon.1bpp",     footprint_bottom
-INCBIN "gfx/footprints/umbreon.1bpp",    footprint_bottom
+INCBIN "gfx/footprints/liteon.1bpp",     footprint_bottom
+INCBIN "gfx/footprints/lumbreon.1bpp",   footprint_bottom
 INCBIN "gfx/footprints/murkrow.1bpp",    footprint_bottom
 INCBIN "gfx/footprints/slowking.1bpp",   footprint_bottom
 INCBIN "gfx/footprints/misdreavus.1bpp", footprint_bottom

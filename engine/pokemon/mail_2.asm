@@ -230,7 +230,7 @@ LoadEonMailGFX:
 	ld de, SurfMailBorderGFX + 6 * TILE_1BPP_SIZE
 	ld c, 1 * TILE_1BPP_SIZE
 	call LoadMailGFX_Color2
-	ld de, MailEeveeGFX
+	ld de, MailLittleGFX
 	ld c, 6 * TILE_1BPP_SIZE
 	call LoadMailGFX_Color3
 	ld hl, vTiles2 tile $3d

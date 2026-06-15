@@ -180,4 +180,7 @@ BattleCommandPointers:
 	dw BattleCommand_SuperEffectiveLoopText
 	dw BattleCommand_StartLoop
 	dw BattleCommand_Curl
+	dw BattleCommand_DemandFoodHeal
+	dw BattleCommand_CheckDemandFood
+	dw BattleCommand_DemandFoodMarkBoost
 	assert_table_length NUM_EFFECT_COMMANDS

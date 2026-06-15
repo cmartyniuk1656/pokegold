@@ -1,9 +1,9 @@
-	db ESPEON ; 196
+	db LUMBREON ; 197
 
-	db  65,  65,  60, 110, 130,  95
+	db  95,  65, 110,  65,  60, 130
 	;   hp  atk  def  spd  sat  sdf
 
-	db PSYCHIC_TYPE, PSYCHIC_TYPE ; type
+	db DARK, DARK ; type
 	db 45 ; catch rate
 	db 197 ; base exp
 	db NO_ITEM, NO_ITEM ; items
@@ -12,9 +12,9 @@
 	db 35 ; step cycles to hatch
 	db 5 ; unknown 2
 IF DEF(_GOLD)
-	INCBIN "gfx/pokemon/espeon/front_gold.dimensions"
+	INCBIN "gfx/pokemon/lumbreon/front_gold.dimensions"
 ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/espeon/front_silver.dimensions"
+	INCBIN "gfx/pokemon/lumbreon/front_silver.dimensions"
 ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_FAST ; growth rate

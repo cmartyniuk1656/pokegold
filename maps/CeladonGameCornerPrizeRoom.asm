@@ -2,7 +2,7 @@ DEF CELADONGAMECORNERPRIZEROOM_TM32_COINS    EQU 1500
 DEF CELADONGAMECORNERPRIZEROOM_TM29_COINS    EQU 3500
 DEF CELADONGAMECORNERPRIZEROOM_TM15_COINS    EQU 7500
 DEF CELADONGAMECORNERPRIZEROOM_MR_MIME_COINS EQU 3333
-DEF CELADONGAMECORNERPRIZEROOM_EEVEE_COINS   EQU 6666
+DEF CELADONGAMECORNERPRIZEROOM_LITTLE_COINS  EQU 6666
 DEF CELADONGAMECORNERPRIZEROOM_PORYGON_COINS EQU 9999
 
 	object_const_def
@@ -135,7 +135,7 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	verticalmenu
 	closewindow
 	ifequal 1, .MrMime
-	ifequal 2, .Eevee
+	ifequal 2, .Little
 	ifequal 3, .Porygon
 	sjump CeladonPrizeRoom_CancelPurchaseScript
 
@@ -157,22 +157,22 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	takecoins CELADONGAMECORNERPRIZEROOM_MR_MIME_COINS
 	sjump .loop
 
-.Eevee:
-	checkcoins CELADONGAMECORNERPRIZEROOM_EEVEE_COINS
+.Little:
+	checkcoins CELADONGAMECORNERPRIZEROOM_LITTLE_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
-	getmonname STRING_BUFFER_3, EEVEE
+	getmonname STRING_BUFFER_3, LITTLE
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
-	setval EEVEE
+	setval LITTLE
 	special GameCornerPrizeMonCheckDex
-	givepoke EEVEE, 15
-	takecoins CELADONGAMECORNERPRIZEROOM_EEVEE_COINS
+	givepoke LITTLE, 15
+	takecoins CELADONGAMECORNERPRIZEROOM_LITTLE_COINS
 	sjump .loop
 
 .Porygon:
@@ -203,7 +203,7 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
 	db "MR.MIME    {d:CELADONGAMECORNERPRIZEROOM_MR_MIME_COINS}@"
-	db "LITTLE     {d:CELADONGAMECORNERPRIZEROOM_EEVEE_COINS}@"
+	db "LITTLE     {d:CELADONGAMECORNERPRIZEROOM_LITTLE_COINS}@"
 	db "PORYGON    {d:CELADONGAMECORNERPRIZEROOM_PORYGON_COINS}@"
 	db "CANCEL@"
 

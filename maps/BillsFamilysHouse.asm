@@ -11,9 +11,9 @@ BillsFamilysHouse_MapScripts:
 BillScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_EEVEE
-	iftrue .GotEevee
-	writetext BillTakeThisEeveeText
+	checkevent EVENT_GOT_LITTLE
+	iftrue .GotLittle
+	writetext BillTakeThisLittleText
 	yesorno
 	iffalse .Refused
 	writetext BillImCountingOnYouText
@@ -21,12 +21,12 @@ BillScript:
 	waitsfx
 	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .NoRoom
-	writetext ReceivedEeveeText
+	writetext ReceivedLittleText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	givepoke EEVEE, 20
-	setevent EVENT_GOT_EEVEE
-	writetext BillEeveeMayEvolveText
+	givepoke LITTLE, 20
+	setevent EVENT_GOT_LITTLE
+	writetext BillLittleMayEvolveText
 	waitbutton
 	closetext
 	end
@@ -38,12 +38,12 @@ BillScript:
 	end
 
 .Refused:
-	writetext BillNoEeveeText
+	writetext BillNoLittleText
 	waitbutton
 	closetext
 	end
 
-.GotEevee:
+.GotLittle:
 	writetext BillPopWontWorkText
 	waitbutton
 	closetext
@@ -106,7 +106,7 @@ BillsHouseBookshelf2:
 BillsHouseRadio:
 	jumpstd Radio2Script
 
-BillTakeThisEeveeText:
+BillTakeThisLittleText:
 	text "BILL: Hi, <PLAYER>!"
 	line "Do us a favor and"
 	cont "take this LITTLE."
@@ -138,12 +138,12 @@ BillImCountingOnYouText:
 	cont "care of it."
 	done
 
-ReceivedEeveeText:
+ReceivedLittleText:
 	text "<PLAYER> received"
 	line "LITTLE!"
 	done
 
-BillEeveeMayEvolveText:
+BillLittleMayEvolveText:
 	text "BILL: PROF.ELM"
 	line "claims LITTLE may"
 
@@ -157,7 +157,7 @@ BillPartyFullText:
 	cont "more #MON."
 	done
 
-BillNoEeveeText:
+BillNoLittleText:
 	text "Oh… Now what to"
 	line "do?"
 	done

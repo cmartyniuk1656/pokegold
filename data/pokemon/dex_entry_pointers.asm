@@ -133,10 +133,10 @@ PokedexDataPointerTable:
 	dw GyaradosPokedexEntry
 	dw LaprasPokedexEntry
 	dw DittoPokedexEntry
-	dw EeveePokedexEntry
-	dw VaporeonPokedexEntry
+	dw LittlePokedexEntry
+	dw LilporeonPokedexEntry
 	dw JoltlePokedexEntry
-	dw FlareonPokedexEntry
+	dw FlittlePokedexEntry
 	dw PorygonPokedexEntry
 	dw OmanytePokedexEntry
 	dw OmastarPokedexEntry
@@ -196,8 +196,8 @@ PokedexDataPointerTable:
 	dw YanmaPokedexEntry
 	dw WooperPokedexEntry
 	dw QuagsirePokedexEntry
-	dw EspeonPokedexEntry
-	dw UmbreonPokedexEntry
+	dw LiteonPokedexEntry
+	dw LumbreonPokedexEntry
 	dw MurkrowPokedexEntry
 	dw SlowkingPokedexEntry
 	dw MisdreavusPokedexEntry

@@ -1818,6 +1818,105 @@ GetQuarterMaxHP:
 .end
 	ret
 
+GetFifthMaxHP:
+; output: bc
+	call GetMaxHP
+
+	xor a
+	ldh [hDividend], a
+	ldh [hDividend + 1], a
+	ld a, b
+	ldh [hDividend + 2], a
+	ld a, c
+	ldh [hDividend + 3], a
+	ld a, 5
+	ldh [hDivisor], a
+	ld b, 4
+	call Divide
+	ldh a, [hQuotient + 2]
+	ld b, a
+	ldh a, [hQuotient + 3]
+	ld c, a
+
+; at least 1
+	or b
+	jr nz, .end
+	inc c
+.end
+	ret
+
+DemandFoodHealCore:
+	ld de, wBattleMonHP
+	ld hl, wBattleMonMaxHP
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .got_hp
+	ld de, wEnemyMonHP
+	ld hl, wEnemyMonMaxHP
+.got_hp
+	ld c, 2
+	call CompareBytes
+	ret z
+
+	call GetFifthMaxHP
+	call SwitchTurnCore
+	call RestoreHP
+	call SwitchTurnCore
+	call UpdateUserInParty
+	call RefreshBattleHuds
+	or 1
+	ret
+
+CheckDemandFoodBoostExpired:
+	ld a, BATTLE_VARS_MOVE_POWER
+	call GetBattleVar
+	and a
+	jr z, .no
+
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_CHARGED, a
+	jr nz, .no
+
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	bit SUBSTATUS_DEMAND_FOOD, [hl]
+	jr z, .no
+	res SUBSTATUS_DEMAND_FOOD, [hl]
+
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerAtkLevel
+	jr z, .got_attack_level
+	ld hl, wEnemyAtkLevel
+.got_attack_level
+	ld a, [hl]
+	cp 2
+	jr c, .no
+	dec [hl]
+	ld hl, DemandFoodBoostWoreOffText
+	call StdBattleTextbox
+	scf
+	ret
+
+.no
+	and a
+	ret
+
+CheckDemandFoodTooFull:
+	ld a, [wLastPlayerMove]
+	cp DEMAND_FOOD
+	jr z, .too_full
+	ld hl, wPlayerSubStatus2
+	bit SUBSTATUS_DEMAND_FOOD, [hl]
+	jr nz, .too_full
+	and a
+	ret
+
+.too_full
+	scf
+	ret
+
 GetHalfMaxHP:
 ; output: bc
 	call GetMaxHP
@@ -5229,9 +5328,20 @@ MoveSelectionScreen:
 	ld a, [hl]
 
 .skip2
+	cp DEMAND_FOOD
+	jr nz, .selected_move_ok
+	call CheckDemandFoodTooFull
+	jr c, .demand_food_too_full
+	ld a, DEMAND_FOOD
+
+.selected_move_ok
 	ld [wCurPlayerMove], a
 	xor a
 	ret
+
+.demand_food_too_full
+	ld hl, DemandFoodTooFullText
+	jr .place_textbox_start_over
 
 .move_disabled
 	ld hl, BattleText_TheMoveIsDisabled
@@ -5987,6 +6097,14 @@ LoadEnemyMon:
 ; Finally done with DVs
 
 .Happiness:
+	ld a, [wTempEnemyMonSpecies]
+	cp LITTLE
+	jr nz, .set_happiness
+	ld a, $ff
+	ld [wEnemyMonDVs], a
+	ld [wEnemyMonDVs + 1], a
+
+.set_happiness
 ; Set happiness
 	ld a, BASE_HAPPINESS
 	ld [wEnemyMonHappiness], a

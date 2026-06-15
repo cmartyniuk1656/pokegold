@@ -135,10 +135,10 @@ PokemonPicPointers::
 	dba_pics GyaradosFrontpic, GyaradosBackpic
 	dba_pics LaprasFrontpic, LaprasBackpic
 	dba_pics DittoFrontpic, DittoBackpic
-	dba_pics EeveeFrontpic, EeveeBackpic
-	dba_pics VaporeonFrontpic, VaporeonBackpic
+	dba_pics LittleFrontpic, LittleBackpic
+	dba_pics LilporeonFrontpic, LilporeonBackpic
 	dba_pics JoltleFrontpic, JoltleBackpic
-	dba_pics FlareonFrontpic, FlareonBackpic
+	dba_pics FlittleFrontpic, FlittleBackpic
 	dba_pics PorygonFrontpic, PorygonBackpic
 	dba_pics OmanyteFrontpic, OmanyteBackpic
 	dba_pics OmastarFrontpic, OmastarBackpic
@@ -198,8 +198,8 @@ PokemonPicPointers::
 	dba_pics YanmaFrontpic, YanmaBackpic
 	dba_pics WooperFrontpic, WooperBackpic
 	dba_pics QuagsireFrontpic, QuagsireBackpic
-	dba_pics EspeonFrontpic, EspeonBackpic
-	dba_pics UmbreonFrontpic, UmbreonBackpic
+	dba_pics LiteonFrontpic, LiteonBackpic
+	dba_pics LumbreonFrontpic, LumbreonBackpic
 	dba_pics MurkrowFrontpic, MurkrowBackpic
 	dba_pics SlowkingFrontpic, SlowkingBackpic
 	dba_pics MisdreavusFrontpic, MisdreavusBackpic

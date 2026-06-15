@@ -96,9 +96,12 @@ DoMove:
 
 ; endturn_command (-2) is used to terminate branches without ending the read cycle.
 	cp endturn_command
-	ret nc
+	jr c, .run_command
+	call MaybeExpireDemandFoodBoost
+	ret
 
 ; The rest of the commands (01-af) are read from BattleCommandPointers.
+.run_command
 	push bc
 	dec a
 	ld c, a
@@ -6062,6 +6065,51 @@ BattleCommand_Heal:
 	call AnimateFailedMove
 	ld hl, HPIsFullText
 	jp StdBattleTextbox
+
+BattleCommand_DemandFoodHeal:
+	call AnimateCurrentMove
+
+	ld hl, DemandFoodHealCore
+	call CallBattleCore
+	ret z
+
+	ld hl, RegainedHealthText
+	jp StdBattleTextbox
+
+BattleCommand_CheckDemandFood:
+	ld a, BATTLE_VARS_LAST_MOVE
+	call GetBattleVar
+	cp DEMAND_FOOD
+	jr z, .too_full
+
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_DEMAND_FOOD, a
+	ret z
+
+.too_full
+	call AnimateFailedMove
+	ld hl, DemandFoodTooFullText
+	call StdBattleTextbox
+	jp EndMoveEffect
+
+BattleCommand_DemandFoodMarkBoost:
+	ld a, [wFailedMessage]
+	and a
+	ret nz
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	set SUBSTATUS_DEMAND_FOOD, [hl]
+	ret
+
+MaybeExpireDemandFoodBoost:
+	ld hl, CheckDemandFoodBoostExpired
+	call CallBattleCore
+	ret nc
+	ldh a, [hBattleTurn]
+	and a
+	jp z, CalcPlayerStats
+	jp CalcEnemyStats
 
 INCLUDE "engine/battle/move_effects/transform.asm"
 

@@ -183,7 +183,7 @@ endr
 	push hl
 	farcall GetTrainerDVs
 	pop hl
-	jr .initializeDVs
+	jr .ForceMaxLittleDVs
 
 .registerpokedex
 	ld a, [wCurPartySpecies]
@@ -206,6 +206,12 @@ endr
 	ld b, a
 	call Random
 	ld c, a
+
+.ForceMaxLittleDVs
+	ld a, [wCurPartySpecies]
+	cp LITTLE
+	jr nz, .initializeDVs
+	ld bc, $ffff
 .initializeDVs
 	ld a, b
 	ld [de], a

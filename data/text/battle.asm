@@ -356,6 +356,17 @@ BattleText_WildMonIsAngry:
 	line "is angry!"
 	prompt
 
+DemandFoodTooFullText:
+	text "LITTLE is too"
+	line "full to demand"
+	cont "food again!"
+	prompt
+
+DemandFoodBoostWoreOffText:
+	text "<USER>'s food"
+	line "boost wore off!"
+	prompt
+
 FastAsleepText:
 	text "<USER>"
 	line "is fast asleep!"
