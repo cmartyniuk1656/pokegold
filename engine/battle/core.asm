@@ -1845,6 +1845,41 @@ GetFifthMaxHP:
 .end
 	ret
 
+GetSevenTwentiethsMaxHP:
+; output: bc
+	call GetMaxHP
+	ld h, b
+	ld l, c
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	add hl, bc
+
+	xor a
+	ldh [hDividend], a
+	ldh [hDividend + 1], a
+	ld a, h
+	ldh [hDividend + 2], a
+	ld a, l
+	ldh [hDividend + 3], a
+	ld a, 20
+	ldh [hDivisor], a
+	ld b, 4
+	call Divide
+	ldh a, [hQuotient + 2]
+	ld b, a
+	ldh a, [hQuotient + 3]
+	ld c, a
+
+; at least 1
+	or b
+	jr nz, .end
+	inc c
+.end
+	ret
+
 DemandFoodHealCore:
 	ld de, wBattleMonHP
 	ld hl, wBattleMonMaxHP
@@ -1914,6 +1949,66 @@ CheckDemandFoodTooFull:
 	ret
 
 .too_full
+	scf
+	ret
+
+CatNapCore:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	ld a, [hl]
+	and a
+	jr z, .got_status_flag
+
+	xor a
+	ld [hl], a
+	ld a, BATTLE_VARS_SUBSTATUS5
+	call GetBattleVarAddr
+	res SUBSTATUS_TOXIC, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	res SUBSTATUS_NIGHTMARE, [hl]
+	call UpdateUserInParty
+	ld a, 1
+
+.got_status_flag
+	push af
+	ld de, wBattleMonHP
+	ld hl, wBattleMonMaxHP
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .got_hp
+	ld de, wEnemyMonHP
+	ld hl, wEnemyMonMaxHP
+.got_hp
+	ld c, 2
+	call CompareBytes
+	jr z, .hp_full
+
+	call GetSevenTwentiethsMaxHP
+	call SwitchTurnCore
+	call RestoreHP
+	call SwitchTurnCore
+	call UpdateUserInParty
+	call RefreshBattleHuds
+	ld hl, RegainedHealthText
+	call StdBattleTextbox
+	pop af
+	jr .status_message
+
+.hp_full
+	pop af
+	and a
+	jr nz, .status_message
+	ld hl, HPIsFullText
+	call StdBattleTextbox
+	and a
+	ret
+
+.status_message
+	and a
+	ret z
+	ld hl, CatNapStatusText
+	call StdBattleTextbox
 	scf
 	ret
 

@@ -252,4 +252,6 @@ MoveNames::
 	li "WHIRLPOOL"
 	li "BEAT UP"
 	li "DEMAND FOOD"
+	li "THUNDER FANG"
+	li "CAT NAP"
 	assert_list_length NUM_ATTACKS

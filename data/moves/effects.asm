@@ -196,6 +196,13 @@ DemandFood:
 	statupfailtext
 	endmove
 
+CatNap:
+	checkobedience
+	usedmovetext
+	doturn
+	catnap
+	endmove
+
 AttackUp:
 	checkobedience
 	usedmovetext

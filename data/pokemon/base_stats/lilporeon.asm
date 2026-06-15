@@ -1,6 +1,6 @@
 	db LILPOREON ; 134
 
-	db 130,  65,  60,  65, 110,  95
+	db 140,  60,  65,  50, 120, 100
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, WATER ; type

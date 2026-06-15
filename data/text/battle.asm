@@ -367,6 +367,11 @@ DemandFoodBoostWoreOffText:
 	line "boost wore off!"
 	prompt
 
+CatNapStatusText:
+	text "<USER>'s status"
+	line "returned to normal!"
+	prompt
+
 FastAsleepText:
 	text "<USER>"
 	line "is fast asleep!"

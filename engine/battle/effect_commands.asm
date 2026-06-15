@@ -6102,8 +6102,14 @@ BattleCommand_DemandFoodMarkBoost:
 	set SUBSTATUS_DEMAND_FOOD, [hl]
 	ret
 
+BattleCommand_CatNap:
+	call LoadMoveAnim
+	ld hl, CatNapCore
+	jr CallBattleCoreRecalcIfCarry
+
 MaybeExpireDemandFoodBoost:
 	ld hl, CheckDemandFoodBoostExpired
+CallBattleCoreRecalcIfCarry:
 	call CallBattleCore
 	ret nc
 	ldh a, [hBattleTurn]
