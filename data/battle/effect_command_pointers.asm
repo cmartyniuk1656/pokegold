@@ -183,4 +183,5 @@ BattleCommandPointers:
 	dw BattleCommand_DemandFoodHeal
 	dw BattleCommand_CheckDemandFood
 	dw BattleCommand_DemandFoodMarkBoost
+	dw BattleCommand_CatNap
 	assert_table_length NUM_EFFECT_COMMANDS

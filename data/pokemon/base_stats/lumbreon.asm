@@ -1,6 +1,6 @@
 	db LUMBREON ; 197
 
-	db  95,  65, 110,  65,  60, 130
+	db 100,  55, 115,  40,  90, 135
 	;   hp  atk  def  spd  sat  sdf
 
 	db DARK, DARK ; type

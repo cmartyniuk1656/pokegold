@@ -1796,15 +1796,19 @@ LittleEvosAttacks:
 	db EVOLVE_HAPPINESS, TR_MORNDAY, LITEON
 	db EVOLVE_HAPPINESS, TR_NITE, LUMBREON
 	db 0 ; no more evolutions
-	db 1, DEMAND_FOOD
-	db 1, TACKLE
-	db 1, TAIL_WHIP
-	db 8, SAND_ATTACK
-	db 16, GROWL
-	db 23, QUICK_ATTACK
-	db 30, BITE
-	db 36, FOCUS_ENERGY
-	db 42, TAKE_DOWN
+	db 1, SCRATCH
+	db 4, TAIL_WHIP
+	db 8, DEMAND_FOOD
+	db 14, BITE
+	db 19, METAL_CLAW
+	db 24, SLASH
+	db 30, THUNDER_FANG
+	db 35, RETURN
+	db 40, SHADOW_BALL
+	db 45, EARTHQUAKE
+	db 50, CAT_NAP
+	db 55, BELLY_DRUM
+	db 60, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 LilporeonEvosAttacks:
@@ -1812,41 +1816,46 @@ LilporeonEvosAttacks:
 	db 1, TACKLE
 	db 1, TAIL_WHIP
 	db 8, SAND_ATTACK
-	db 16, WATER_GUN
-	db 23, QUICK_ATTACK
+	db 16, BUBBLEBEAM
+	db 23, AURORA_BEAM
 	db 30, BITE
-	db 36, AURORA_BEAM
-	db 42, HAZE
-	db 47, ACID_ARMOR
+	db 36, ICE_BEAM
+	db 42, RAIN_DANCE
+	db 47, HAZE
 	db 52, HYDRO_PUMP
+	db 58, BLIZZARD
+	db 62, AMNESIA
 	db 0 ; no more level-up moves
 
 JoltleEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP
-	db 8, SAND_ATTACK
-	db 16, THUNDERSHOCK
-	db 23, QUICK_ATTACK
-	db 30, DOUBLE_KICK
-	db 36, PIN_MISSILE
-	db 42, THUNDER_WAVE
-	db 47, AGILITY
-	db 52, THUNDER
+	db 8, THUNDERSHOCK
+	db 16, SPIKES
+	db 23, SWIFT
+	db 30, PIN_MISSILE
+	db 34, THUNDERBOLT
+	db 36, THUNDER_WAVE
+	db 42, BITE
+	db 47, GIGA_DRAIN
+	db 55, THUNDER
 	db 0 ; no more level-up moves
 
 FlittleEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP
-	db 8, SAND_ATTACK
+	db 8, MUD_SLAP
 	db 16, EMBER
-	db 23, QUICK_ATTACK
-	db 30, BITE
-	db 36, FIRE_SPIN
-	db 42, SMOG
-	db 47, LEER
+	db 23, CONFUSE_RAY
+	db 30, DIG
+	db 36, FLAME_WHEEL
+	db 39, MORNING_SUN
+	db 42, SUNNY_DAY
+	db 47, DRAGONBREATH
 	db 52, FLAMETHROWER
+	db 58, FIRE_BLAST
 	db 0 ; no more level-up moves
 
 PorygonEvosAttacks:
@@ -2643,26 +2652,29 @@ LiteonEvosAttacks:
 	db 1, TAIL_WHIP
 	db 8, SAND_ATTACK
 	db 16, CONFUSION
-	db 23, QUICK_ATTACK
-	db 30, SWIFT
-	db 36, PSYBEAM
-	db 42, PSYCH_UP
-	db 47, PSYCHIC_M
-	db 52, MORNING_SUN
+	db 23, SWIFT
+	db 30, PSYBEAM
+	db 36, GROWTH
+	db 42, REFLECT
+	db 47, BATON_PASS
+	db 52, PSYCHIC_M
+	db 58, RECOVER
 	db 0 ; no more level-up moves
 
 LumbreonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP
-	db 8, SAND_ATTACK
-	db 16, PURSUIT
-	db 23, QUICK_ATTACK
-	db 30, CONFUSE_RAY
-	db 36, FAINT_ATTACK
-	db 42, MEAN_LOOK
-	db 47, SCREECH
-	db 52, MOONLIGHT
+	db 8, PURSUIT
+	db 16, BITE
+	db 23, CONFUSE_RAY
+	db 30, CRUNCH
+	db 36, SPORE
+	db 42, MOONLIGHT
+	db 47, DREAM_EATER
+	db 52, MEAN_LOOK
+	db 57, DETECT
+	db 62, THIEF
 	db 0 ; no more level-up moves
 
 MurkrowEvosAttacks:

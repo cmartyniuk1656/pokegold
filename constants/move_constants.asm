@@ -258,6 +258,8 @@
 	const WHIRLPOOL    ; fa
 	const BEAT_UP      ; fb
 	const DEMAND_FOOD  ; fc
+	const THUNDER_FANG ; fd
+	const CAT_NAP      ; fe
 DEF NUM_ATTACKS EQU const_value - 1
 
 DEF CANNOT_MOVE EQU $ff

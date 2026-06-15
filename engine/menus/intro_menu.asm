@@ -65,6 +65,14 @@ _ResetWRAM:
 
 	ld hl, wNumItems
 	call .InitList
+	ld a, 1
+	ld [wNumItems], a
+	ld a, RARE_CANDY
+	ld [wItems], a
+	ld a, 99
+	ld [wItems + 1], a
+	ld a, -1
+	ld [wItems + 2], a
 
 	ld hl, wNumKeyItems
 	call .InitList

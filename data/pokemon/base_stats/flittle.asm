@@ -1,6 +1,6 @@
 	db FLITTLE ; 136
 
-	db  65, 130,  60,  65,  95, 110
+	db  65,  90,  60,  75, 130, 115
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIRE, FIRE ; type

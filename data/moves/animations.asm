@@ -254,9 +254,9 @@ BattleAnimations::
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
 	dw BattleAnim_DemandFood
+	dw BattleAnim_Thunderpunch
+	dw BattleAnim_Rest
 	assert_table_length NUM_ATTACKS + 1
-	dw BattleAnim_Dummy
-	dw BattleAnim_Dummy
 	dw BattleAnim_SweetScent2
 	assert_table_length $100
 ; $100

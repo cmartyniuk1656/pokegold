@@ -253,15 +253,13 @@ MoveDescriptions::
 	dw WhirlpoolDescription
 	dw BeatUpDescription
 	dw DemandFoodDescription
+	dw ThunderFangDescription
+	dw CatNapDescription
 	assert_table_length NUM_ATTACKS
-	dw MoveFDDescription
-	dw MoveFEDescription
 	dw MoveFFDescription
 	dw Move00Description
 	assert_table_length $100
 
-MoveFDDescription:
-MoveFEDescription:
 MoveFFDescription:
 Move00Description:
 	db "?@"
@@ -835,8 +833,8 @@ LovelyKissDescription:
 	next "to fall asleep.@"
 
 SkyAttackDescription:
-	db   "1st turn: Prepare"
-	next "2nd turn: Attack@"
+	db   "A strong FLYING-"
+	next "type attack.@"
 
 TransformDescription:
 	db   "The user assumes"
@@ -1273,3 +1271,11 @@ BeatUpDescription:
 DemandFoodDescription:
 	db   "Restores HP and"
 	next "raises ATTACK.@"
+
+ThunderFangDescription:
+	db   "An electric bite"
+	next "that may paralyze.@"
+
+CatNapDescription:
+	db   "Restores HP and"
+	next "cures status.@"
