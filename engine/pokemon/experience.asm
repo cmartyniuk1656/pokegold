@@ -101,20 +101,20 @@ CapExpAtHLToMultiplicand:
 LevelCapsByBadgeCount:
 	db 12        ; 0 badges
 	db 16        ; 1 badge
-	db 20        ; 2 badges
+	db 21        ; 2 badges
 	db 25        ; 3 badges
-	db 30        ; 4 badges
-	db 35        ; 5 badges
-	db 40        ; 6 badges
+	db 35        ; 4 badges
+	db 36        ; 5 badges
+	db 38        ; 6 badges
 	db 45        ; 7 badges
-	db 50        ; 8 badges
-	db 55        ; 9 badges
-	db 60        ; 10 badges
-	db 65        ; 11 badges
-	db 70        ; 12 badges
-	db 75        ; 13 badges
-	db 80        ; 14 badges
-	db 85        ; 15 badges
+	db 60        ; 8 badges
+	db 62        ; 9 badges
+	db 63        ; 10 badges
+	db 64        ; 11 badges
+	db 66        ; 12 badges
+	db 66        ; 13 badges
+	db 67        ; 14 badges
+	db 69        ; 15 badges
 	db MAX_LEVEL ; 16 badges
 
 CalcExpAtLevel:

@@ -16,7 +16,13 @@ OlivineGymJasmineScript:
 	waitbutton
 	closetext
 	winlosstext Jasmine_BetterTrainer, 0
+	readvar VAR_BADGES
+	ifless 6, .LoadJasmine1
+	loadtrainer JASMINE, JASMINE2
+	sjump .StartBattle
+.LoadJasmine1:
 	loadtrainer JASMINE, JASMINE1
+.StartBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE

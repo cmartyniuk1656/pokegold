@@ -21,7 +21,17 @@ MahoganyGymPryceScript:
 	waitbutton
 	closetext
 	winlosstext PryceText_Impressed, 0
+	readvar VAR_BADGES
+	ifless 5, .LoadPryce1
+	ifequal 5, .LoadPryce2
+	loadtrainer PRYCE, PRYCE3
+	sjump .StartBattle
+.LoadPryce2:
+	loadtrainer PRYCE, PRYCE2
+	sjump .StartBattle
+.LoadPryce1:
 	loadtrainer PRYCE, PRYCE1
+.StartBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PRYCE

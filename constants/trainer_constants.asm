@@ -38,12 +38,17 @@ DEF NUM_NONTRAINER_PHONECONTACTS EQU const_value - 1
 
 	trainerclass PRYCE ; 5
 	const PRYCE1
+	const PRYCE2
+	const PRYCE3
 
 	trainerclass JASMINE ; 6
 	const JASMINE1
+	const JASMINE2
 
 	trainerclass CHUCK ; 7
 	const CHUCK1
+	const CHUCK2
+	const CHUCK3
 
 	trainerclass CLAIR ; 8
 	const CLAIR1
