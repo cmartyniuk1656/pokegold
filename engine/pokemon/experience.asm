@@ -30,6 +30,93 @@ CalcLevel:
 	dec d
 	ret
 
+GetCurrentLevelCap:
+	push bc
+	push hl
+	ld hl, wBadges
+	ld b, 2
+	call CountSetBits
+	ld c, a
+	ld b, 0
+	ld hl, LevelCapsByBadgeCount
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	pop bc
+	ret
+
+IsPartyMonAtLevelCap:
+	call GetCurrentLevelCap
+	ld d, a
+	ld hl, MON_LEVEL
+	add hl, bc
+	ld a, [hl]
+	cp d
+	jr c, .below_cap
+	scf
+	ret
+
+.below_cap
+	and a
+	ret
+
+CapPartyMonExpAtLevelCap:
+	push bc
+	call GetCurrentLevelCap
+	ld d, a
+	call CalcExpAtLevel
+	pop bc
+	ld hl, MON_EXP + 2
+	add hl, bc
+	jr CapExpAtHLToMultiplicand
+
+CapTempMonExpAtLevelCap:
+	call GetCurrentLevelCap
+	ld d, a
+	call CalcExpAtLevel
+	ld hl, wTempMonExp + 2
+
+CapExpAtHLToMultiplicand:
+	ldh a, [hMultiplicand + 2]
+	ld d, a
+	ldh a, [hMultiplicand + 1]
+	ld e, a
+	ldh a, [hMultiplicand]
+	ld b, a
+	ld a, [hld]
+	sub d
+	ld a, [hld]
+	sbc e
+	ld a, [hl]
+	sbc b
+	ret c
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hl], a
+	ret
+
+LevelCapsByBadgeCount:
+	db 12        ; 0 badges
+	db 16        ; 1 badge
+	db 20        ; 2 badges
+	db 25        ; 3 badges
+	db 30        ; 4 badges
+	db 35        ; 5 badges
+	db 40        ; 6 badges
+	db 45        ; 7 badges
+	db 50        ; 8 badges
+	db 55        ; 9 badges
+	db 60        ; 10 badges
+	db 65        ; 11 badges
+	db 70        ; 12 badges
+	db 75        ; 13 badges
+	db 80        ; 14 badges
+	db 85        ; 15 badges
+	db MAX_LEVEL ; 16 badges
+
 CalcExpAtLevel:
 ; (a/b)*n**3 + c*n**2 + d*n - e
 ; BUG: Experience underflow for level 1 Pokémon with Medium-Slow growth rate (see docs/bugs_and_glitches.md)
