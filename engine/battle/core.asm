@@ -7056,6 +7056,10 @@ GiveExperiencePoints:
 	call Divide
 ; Boost Experience for traded Pokemon
 	pop bc
+	push bc
+	callfar IsPartyMonAtLevelCap
+	pop bc
+	jp c, .next_mon
 	ld hl, MON_OT_ID
 	add hl, bc
 	ld a, [wPlayerID]
@@ -7126,33 +7130,7 @@ GiveExperiencePoints:
 	ld [wCurSpecies], a
 	call GetBaseData
 	push bc
-	ld d, MAX_LEVEL
-	callfar CalcExpAtLevel
-	pop bc
-	ld hl, MON_EXP + 2
-	add hl, bc
-	push bc
-	ldh a, [hQuotient + 1]
-	ld b, a
-	ldh a, [hQuotient + 2]
-	ld c, a
-	ldh a, [hQuotient + 3]
-	ld d, a
-	ld a, [hld]
-	sub d
-	ld a, [hld]
-	sbc c
-	ld a, [hl]
-	sbc b
-	jr c, .not_max_exp
-	ld a, b
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	ld a, d
-	ld [hld], a
-
-.not_max_exp
+	callfar CapPartyMonExpAtLevelCap
 ; Check if the mon leveled up
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -7442,30 +7420,7 @@ AnimateExpBar:
 	inc [hl]
 
 .NoOverflow:
-	ld d, MAX_LEVEL
-	callfar CalcExpAtLevel
-	ldh a, [hProduct + 1]
-	ld b, a
-	ldh a, [hProduct + 2]
-	ld c, a
-	ldh a, [hProduct + 3]
-	ld d, a
-	ld hl, wTempMonExp + 2
-	ld a, [hld]
-	sub d
-	ld a, [hld]
-	sbc c
-	ld a, [hl]
-	sbc b
-	jr c, .AlreadyAtMaxExp
-	ld a, b
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	ld a, d
-	ld [hld], a
-
-.AlreadyAtMaxExp:
+	callfar CapTempMonExpAtLevelCap
 	callfar CalcLevel
 	ld a, d
 	pop bc
