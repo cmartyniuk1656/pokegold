@@ -33,7 +33,7 @@ RockMonEncounter:
 	call GetTreeMonSet
 	jr nc, .no_battle
 
-	call GetTreeMons
+	call GetRockMons
 	jr nc, .no_battle
 
 	; 40% chance of an encounter
@@ -95,19 +95,39 @@ GetTreeMons:
 ; Return the address of TreeMon table a in hl.
 ; Return nc if table a doesn't exist.
 
-	; last two sets are unused/ignored
-	assert TREEMON_SET_UNUSED == NUM_TREEMON_SETS - 2
-	assert TREEMON_SET_CITY == NUM_TREEMON_SETS - 1
-	cp NUM_TREEMON_SETS - 2
+	cp NUM_TREEMON_SETS
 	jr nc, .quit
 
-	assert TREEMON_SET_NONE == 0
 	and a
 	jr z, .quit
 
 	ld e, a
 	ld d, 0
 	ld hl, TreeMons
+	add hl, de
+	add hl, de
+
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	scf
+	ret
+
+.quit
+	xor a
+	ret
+
+GetRockMons:
+; Return the address of RockSmashMons table a in hl.
+; Return nc if table a doesn't exist.
+
+	cp NUM_ROCKSMASH_SETS
+	jr nc, .quit
+
+	ld e, a
+	ld d, 0
+	ld hl, RockSmashMons
 	add hl, de
 	add hl, de
 
