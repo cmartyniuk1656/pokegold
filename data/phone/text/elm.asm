@@ -204,6 +204,32 @@ ElmPhoneGiftText:
 	para "See you later!"
 	done
 
+ElmPhoneMasterBallText:
+	text "Hello, <PLAYER>?"
+
+	para "I heard you got"
+	line "all eight BADGES!"
+
+	para "Your level cap"
+	line "restriction has"
+	cont "been lifted!"
+
+	para "Your #MON can"
+	line "now become the"
+
+	para "most powerful"
+	line "#MON in the"
+	cont "world."
+
+	para "I have something"
+	line "here for you."
+
+	para "Could you swing by"
+	line "my LAB?"
+
+	para "See you later!"
+	done
+
 ElmPhoneGotAholdOfSomethingNeatText:
 	text "Hello, <PLAYER>?"
 	line "How's it going?"

@@ -103,18 +103,18 @@ LevelCapsByBadgeCount:
 	db 16        ; 1 badge
 	db 21        ; 2 badges
 	db 25        ; 3 badges
-	db 35        ; 4 badges
+	db 33        ; 4 badges
 	db 36        ; 5 badges
 	db 38        ; 6 badges
 	db 45        ; 7 badges
-	db 60        ; 8 badges
-	db 62        ; 9 badges
-	db 63        ; 10 badges
-	db 64        ; 11 badges
-	db 66        ; 12 badges
-	db 66        ; 13 badges
-	db 67        ; 14 badges
-	db 69        ; 15 badges
+	db MAX_LEVEL ; 8 badges
+	db MAX_LEVEL ; 9 badges
+	db MAX_LEVEL ; 10 badges
+	db MAX_LEVEL ; 11 badges
+	db MAX_LEVEL ; 12 badges
+	db MAX_LEVEL ; 13 badges
+	db MAX_LEVEL ; 14 badges
+	db MAX_LEVEL ; 15 badges
 	db MAX_LEVEL ; 16 badges
 
 CalcExpAtLevel:
