@@ -1,6 +1,6 @@
 # TODO
 
-- Running Shoes by holding the B-button
+- Fix level caps
 - expand item bag to hold up to 84 item slots
 - Jasmine cant be the 4th so update level caps
 - When picking up TMs the name of the move should be displayed
@@ -15,3 +15,5 @@
 - Wobbuffet in celadon game corner (5555)
 - Odd egg guarenteed to haev good DVs
 - Restrict items in battle only for boss battles
+- Sulim Sprites
+- Chris Battle

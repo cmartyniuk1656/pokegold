@@ -199,6 +199,7 @@ HandleMapTimeAndJoypad:
 	ret
 
 HandleMapObjects:
+	farcall UpdatePlayerRunInput
 	farcall HandleNPCStep
 	farcall _HandlePlayerStep
 	call _CheckObjectEnteringVisibleRange

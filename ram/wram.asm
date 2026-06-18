@@ -1239,8 +1239,8 @@ wPlayerStepDirection:: db
 
 wPlayerNextMovement:: db
 wPlayerMovement:: db
-
-	ds 2
+wPlayerRunInput:: db
+wPlayerRunReleaseCount:: db
 
 wMovementObject:: db
 wMovementDataBank:: db
