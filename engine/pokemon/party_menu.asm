@@ -11,6 +11,10 @@ SelectMonFromParty:
 	call ReturnToMapWithSpeechTextbox
 	ret
 
+SelectMonForTutorMove:
+	ld b, PARTYMENUACTION_TEACH_TUTOR
+	jr SelectTradeOrDayCareMon
+
 SelectTradeOrDayCareMon:
 	ld a, b
 	ld [wPartyMenuActionText], a
@@ -313,7 +317,16 @@ PlacePartyMonTMHMCompatibility:
 	add hl, de
 	ld a, [hl]
 	ld [wCurPartySpecies], a
+	ld a, [wPartyMenuActionText]
+	cp PARTYMENUACTION_TEACH_TUTOR
+	jr z, .tutor
 	predef CanLearnTMHMMove
+	jr .got_compatibility
+
+.tutor
+	farcall CanLearnCeladonTutorMove
+
+.got_compatibility
 	pop hl
 	call .PlaceAbleNotAble
 	call PlaceString
@@ -667,6 +680,7 @@ PartyMenuStrings:
 	dw ChooseAMonString ; Probably used to be ChooseAFemalePKMNString
 	dw ChooseAMonString ; Probably used to be ChooseAMalePKMNString
 	dw ToWhichPKMNString
+	dw TeachWhichPKMNString
 
 ChooseAMonString:
 	db "Choose a #MON.@"

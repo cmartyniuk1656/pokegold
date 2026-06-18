@@ -149,6 +149,7 @@ INCLUDE "engine/battle/ai/redundant.asm"
 INCLUDE "engine/events/move_deleter.asm"
 INCLUDE "engine/link/mystery_gift_2.asm"
 INCLUDE "engine/items/tmhm.asm"
+INCLUDE "engine/events/celadon_move_tutor.asm"
 INCLUDE "engine/pokemon/print_move_description.asm"
 INCLUDE "engine/events/pokerus/pokerus.asm"
 
