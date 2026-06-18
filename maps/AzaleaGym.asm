@@ -50,9 +50,25 @@ AzaleaGymBugsyScript:
 	end
 
 .GotFuryCutter:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
 	writetext BugsyText_BugMonsAreDeep
 	waitbutton
 .NoRoomForFuryCutter:
+	closetext
+	end
+
+.Rematch:
+	writetext BugsyRematchIntroText
+	waitbutton
+	closetext
+	winlosstext BugsyRematchWinText, 0
+	loadtrainer BUGSY, BUGSY2
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext BugsyRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -160,6 +176,15 @@ BugsyText_INeverLose:
 	para "the authority on"
 	line "bug #MON!"
 
+	para "Your LITTLE is"
+	line "interesting..."
+
+	para "Cute, fast, and"
+	line "probably trouble."
+
+	para "But bugs have"
+	line "amazing secrets!"
+
 	para "Let me demonstrate"
 	line "what I've learned"
 	cont "from my studies."
@@ -169,6 +194,10 @@ BugsyText_ResearchIncomplete:
 	text "Whoa, amazing!"
 	line "You're an expert"
 	cont "on #MON!"
+
+	para "And your LITTLE"
+	line "is even stronger"
+	cont "than I expected."
 
 	para "My research isn't"
 	line "complete yet."
@@ -197,6 +226,12 @@ BugsyText_HiveBadgeSpeech:
 	para "to use it outside"
 	line "of battle too."
 
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "find that useful."
+
 	para "Here, I also want"
 	line "you to have this."
 	done
@@ -213,6 +248,9 @@ BugsyText_FuryCutterSpeech:
 	line "battle goes, the"
 	cont "better it gets."
 
+	para "It's perfect for"
+	line "a careful study."
+
 	para "Isn't that great?"
 	line "I discovered it!"
 	done
@@ -224,8 +262,61 @@ BugsyText_BugMonsAreDeep:
 	para "many mysteries to"
 	line "be explored."
 
+	para "Your LITTLE has"
+	line "mysteries too."
+
 	para "Study your favor-"
 	line "ites thoroughly."
+	done
+
+BugsyRematchIntroText:
+	text "You came back!"
+
+	para "Since you became"
+	line "CHAMPION, I've"
+
+	para "expanded my"
+	line "research."
+
+	para "Bug #MON evolve,"
+	line "adapt, and strike"
+
+	para "when least"
+	line "expected."
+
+	para "Even your LITTLE"
+	line "might be surprised"
+	cont "this time."
+
+	para "Let's begin my"
+	line "next experiment!"
+	done
+
+BugsyRematchWinText:
+	text "Incredible!"
+
+	para "Even after all my"
+	line "new research,"
+
+	para "you and LITTLE"
+	line "still found a way"
+	cont "through."
+
+	para "That battle gave"
+	line "me so much new"
+	cont "data!"
+	done
+
+BugsyRematchAfterText:
+	text "Bug #MON still"
+	line "have so much to"
+	cont "teach me."
+
+	para "Come back anytime."
+
+	para "Every battle with"
+	line "you and LITTLE is"
+	cont "valuable research."
 	done
 
 BugCatcherBennySeenText:

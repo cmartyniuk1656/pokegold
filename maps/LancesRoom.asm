@@ -52,18 +52,35 @@ Script_ApproachLanceFromRight:
 LancesRoomLanceScript:
 	turnobject LANCESROOM_LANCE, LEFT
 	opentext
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .Rematch
 	writetext LanceBattleIntroText
 	waitbutton
 	closetext
 	winlosstext LanceBattleWinText, 0
 	setlasttalked LANCESROOM_LANCE
 	loadtrainer CHAMPION, LANCE
+	sjump .StartBattle
+.Rematch:
+	writetext LanceRematchIntroText
+	waitbutton
+	closetext
+	winlosstext LanceRematchWinText, 0
+	setlasttalked LANCESROOM_LANCE
+	loadtrainer CHAMPION, LANCE2
+.StartBattle:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	opentext
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchAfter
 	writetext LanceBattleAfterText
+	sjump .AfterTextDone
+.RematchAfter:
+	writetext LanceRematchAfterText
+.AfterTextDone:
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -220,6 +237,12 @@ LanceBattleIntroText:
 	para "would eventually"
 	line "reach me here."
 
+	para "And that LITTLE..."
+	line "It has grown far"
+
+	para "beyond what its"
+	line "size suggests."
+
 	para "There's no need"
 	line "for words now."
 
@@ -255,6 +278,10 @@ LanceBattleWinText:
 
 	para "of a great new"
 	line "CHAMPION!"
+
+	para "You and LITTLE"
+	line "earned this moment"
+	cont "together."
 	done
 
 LanceBattleAfterText:
@@ -270,11 +297,93 @@ LanceBattleAfterText:
 	para "strong and up-"
 	line "standing nature."
 
+	para "LITTLE especially"
+	line "seems to trust"
+	cont "you completely."
+
 	para "As a trainer, you"
 	line "will continue to"
 
 	para "grow strong with"
 	line "your #MON."
+	done
+
+LanceRematchIntroText:
+	text "LANCE: Welcome"
+	line "back, <PLAYER>."
+
+	para "You have earned"
+	line "all 16 BADGES."
+
+	para "Johto and Kanto"
+	line "have both tested"
+	cont "your strength."
+
+	para "Many trainers"
+	line "dream of standing"
+	cont "where you stand."
+
+	para "Few could do it"
+	line "with the same"
+
+	para "partner at their"
+	line "side."
+
+	para "Your LITTLE has"
+	line "become a symbol"
+	cont "of that journey."
+
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "respect such a"
+	cont "bond."
+
+	para "Now, as CHAMPION,"
+	line "I accept your"
+	cont "challenge again!"
+
+	para "Let us see how far"
+	line "you have risen!"
+	done
+
+LanceRematchWinText:
+	text "…Magnificent."
+
+	para "Even after all my"
+	line "training, you have"
+
+	para "surpassed me"
+	line "again."
+
+	para "Your strength is"
+	line "not borrowed."
+
+	para "It was built over"
+	line "every step of your"
+	cont "journey."
+
+	para "You and LITTLE"
+	line "are worthy of the"
+	cont "title CHAMPION."
+	done
+
+LanceRematchAfterText:
+	text "I will continue"
+	line "training my dragon"
+	cont "#MON."
+
+	para "A true CHAMPION"
+	line "never stops"
+	cont "improving."
+
+	para "Return whenever"
+	line "you wish."
+
+	para "I will be waiting"
+	line "for another great"
+	cont "battle."
 	done
 
 LancesRoomMaryOhNoOakText:

@@ -45,16 +45,32 @@ WillScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue WillScript_AfterBattle
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .Rematch
 	writetext WillScript_WillBeforeText
 	waitbutton
 	closetext
 	winlosstext WillScript_WillBeatenText, 0
 	loadtrainer WILL, WILL1
+	sjump .StartBattle
+.Rematch:
+	writetext WillScript_RematchBeforeText
+	waitbutton
+	closetext
+	winlosstext WillScript_RematchBeatenText, 0
+	loadtrainer WILL, WILL2
+.StartBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_WILL
 	opentext
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext WillScript_WillDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext WillScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -66,7 +82,13 @@ WillScript_Battle:
 	end
 
 WillScript_AfterBattle:
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext WillScript_WillDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext WillScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	end
@@ -96,8 +118,15 @@ WillScript_WillBeforeText:
 	line "been accepted into"
 	cont "the ELITE FOUR."
 
-	para "I can only keep"
-	line "getting better!"
+	para "Your LITTLE has"
+	line "a curious aura..."
+
+	para "Small, but bright."
+	line "Very bright."
+
+	para "But I can only"
+	line "keep getting"
+	cont "better!"
 
 	para "Losing is not an"
 	line "option!"
@@ -113,6 +142,10 @@ WillScript_WillDefeatText:
 	line "defeated, I won't"
 	cont "change my course."
 
+	para "Your bond with"
+	line "LITTLE is stronger"
+	cont "than I foresaw."
+
 	para "I will continue"
 	line "battling until I"
 
@@ -124,6 +157,79 @@ WillScript_WillDefeatText:
 
 	para "the true ferocity"
 	line "of the ELITE FOUR."
+	done
+
+WillScript_RematchBeforeText:
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "You have conquered"
+	line "all 16 BADGES."
+
+	para "That is no"
+	line "ordinary feat."
+
+	para "Since our first"
+	line "battle, I have"
+	cont "looked inward..."
+
+	para "and trained my"
+	line "psychic #MON to"
+	cont "reach new heights."
+
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "respect such a"
+	cont "journey."
+
+	para "But admiration"
+	line "will not stop me."
+
+	para "I will read your"
+	line "moves, your mind,"
+	cont "and your future!"
+
+	para "This time, I will"
+	line "not lose!"
+	done
+
+WillScript_RematchBeatenText:
+	text "Again..."
+
+	para "Even my visions"
+	line "were overcome..."
+	done
+
+WillScript_RematchDefeatText:
+	text "I see it now."
+
+	para "Power alone is not"
+	line "what brought you"
+	cont "this far."
+
+	para "You and LITTLE"
+	line "trust each other"
+	cont "completely."
+
+	para "That bond changes"
+	line "the outcome of"
+	cont "battle itself."
+
+	para "Still, I will not"
+	line "abandon my path."
+
+	para "I will train until"
+	line "my psychic power"
+
+	para "surpasses even"
+	line "this defeat."
+
+	para "Now go on."
+
+	para "The ELITE FOUR"
+	line "still awaits you."
 	done
 
 WillsRoom_MapEvents:

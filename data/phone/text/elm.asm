@@ -188,8 +188,15 @@ ElmPhoneRadioTowerRocketTakeoverText:
 ElmPhoneGiftText:
 	text "Hello, <PLAYER>?"
 
+	para "I heard you beat"
+	line "the #MON LEAGUE!"
+
 	para "I have something"
 	line "here for you."
+
+	para "Also, JOHTO's"
+	line "GYM LEADERS want"
+	cont "rematches now."
 
 	para "Could you swing by"
 	line "my LAB?"

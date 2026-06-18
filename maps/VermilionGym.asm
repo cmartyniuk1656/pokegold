@@ -31,6 +31,7 @@ VermilionGymSurgeScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
+	farscall MaybeCallOakAfter16Badges
 	writetext LtSurgeThunderBadgeText
 	waitbutton
 	closetext

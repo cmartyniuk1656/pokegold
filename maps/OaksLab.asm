@@ -16,7 +16,10 @@ Oak:
 	faceplayer
 	opentext
 	checkevent EVENT_OPENED_MT_SILVER
+	iffalse .CheckFirstKantoVisit
+	checkevent EVENT_BEAT_ELITE_FOUR_REMATCH
 	iftrue .CheckPokedex
+.CheckFirstKantoVisit:
 	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
 	iftrue .CheckBadges
 	writetext OakWelcomeKantoText
@@ -24,7 +27,7 @@ Oak:
 	setevent EVENT_TALKED_TO_OAK_IN_KANTO
 .CheckBadges:
 	readvar VAR_BADGES
-	ifequal NUM_BADGES, .OpenMtSilver
+	ifequal NUM_BADGES, .CheckEliteFourRematch
 	ifequal NUM_JOHTO_BADGES, .Complain
 	sjump .AhGood
 
@@ -36,6 +39,13 @@ Oak:
 	waitbutton
 	closetext
 	end
+
+.CheckEliteFourRematch:
+	checkevent EVENT_BEAT_ELITE_FOUR_REMATCH
+	iftrue .OpenMtSilver
+	writetext OakEliteFourRematchText
+	promptbutton
+	sjump .CheckPokedex
 
 .OpenMtSilver:
 	writetext OakOpenMtSilverText
@@ -180,6 +190,18 @@ OakYesKantoBadgesText:
 
 	para "Keep trying hard,"
 	line "<PLAYER>!"
+	done
+
+OakEliteFourRematchText:
+	text "OAK: You've earned"
+	line "all 16 BADGES."
+
+	para "Before I can open"
+	line "MT.SILVER, prove"
+
+	para "yourself once more"
+	line "at the #MON"
+	cont "LEAGUE."
 	done
 
 OaksAssistant1Text:

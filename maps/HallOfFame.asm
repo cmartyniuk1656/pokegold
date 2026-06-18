@@ -31,6 +31,17 @@ HallOfFameEnterScript:
 	setval HEALMACHINE_HALL_OF_FAME
 	special HealMachineAnim
 	setevent EVENT_BEAT_ELITE_FOUR
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .SetEliteFourRematch
+	sjump .SkipEliteFourRematch
+.SetEliteFourRematch:
+	setevent EVENT_BEAT_ELITE_FOUR_REMATCH
+	setevent EVENT_OPENED_MT_SILVER
+	checkevent EVENT_OAK_CALLED_ABOUT_MT_SILVER
+	iftrue .SkipEliteFourRematch
+	setevent EVENT_OAK_CALLED_ABOUT_MT_SILVER
+	specialphonecall SPECIALCALL_OAK_MT_SILVER
+.SkipEliteFourRematch:
 	setevent EVENT_TELEPORT_GUY
 	setevent EVENT_RIVAL_SPROUT_TOWER
 	clearevent EVENT_RED_IN_MT_SILVER

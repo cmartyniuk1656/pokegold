@@ -21,7 +21,17 @@ MahoganyGymPryceScript:
 	waitbutton
 	closetext
 	winlosstext PryceText_Impressed, 0
+	readvar VAR_BADGES
+	ifless 5, .LoadPryce1
+	ifequal 5, .LoadPryce2
+	loadtrainer PRYCE, PRYCE3
+	sjump .StartBattle
+.LoadPryce2:
+	loadtrainer PRYCE, PRYCE2
+	sjump .StartBattle
+.LoadPryce1:
 	loadtrainer PRYCE, PRYCE1
+.StartBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PRYCE
@@ -34,7 +44,7 @@ MahoganyGymPryceScript:
 	scall MahoganyGymActivateRockets
 .FightDone:
 	checkevent EVENT_GOT_TM16_ICY_WIND
-	iftrue PryceScript_Defeat
+	iftrue .CheckRematch
 	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
 	setevent EVENT_BEAT_BOARDER_RONALD
@@ -43,17 +53,34 @@ MahoganyGymPryceScript:
 	writetext PryceText_GlacierBadgeSpeech
 	promptbutton
 	verbosegiveitem TM_ICY_WIND
-	iffalse MahoganyGym_NoRoomForIcyWind
+	iffalse .NoRoomForIcyWind
 	setevent EVENT_GOT_TM16_ICY_WIND
 	writetext PryceText_IcyWindSpeech
 	waitbutton
 	closetext
 	end
 
-PryceScript_Defeat:
+.CheckRematch:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
+.Defeat:
 	writetext PryceText_CherishYourPokemon
 	waitbutton
-MahoganyGym_NoRoomForIcyWind:
+.NoRoomForIcyWind:
+	closetext
+	end
+
+.Rematch:
+	writetext PryceRematchIntroText
+	waitbutton
+	closetext
+	winlosstext PryceRematchWinText, 0
+	loadtrainer PRYCE, PRYCE4
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext PryceRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -168,7 +195,11 @@ PryceText_Intro:
 	para "before you were"
 	line "born."
 
-	para "I do not lose"
+	para "Your LITTLE may"
+	line "be young, but I"
+	cont "see spirit there."
+
+	para "Still, I do not"
 	line "easily."
 
 	para "I, PRYCE--the"
@@ -188,6 +219,10 @@ PryceText_Impressed:
 	para "will overcome all"
 	line "life's obstacles."
 
+	para "Your LITTLE has"
+	line "chosen a good"
+	cont "companion."
+
 	para "You are worthy of"
 	line "this BADGE!"
 	done
@@ -204,8 +239,16 @@ PryceText_GlacierBadgeSpeech:
 
 	para "It also lets your"
 	line "#MON use WHIRL-"
-	cont "POOL to get across"
-	cont "real whirlpools."
+
+	para "POOL to get across"
+	line "real whirlpools."
+
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "respect such"
+	cont "discipline."
 
 	para "And this… This is"
 	line "a gift from me!"
@@ -221,6 +264,9 @@ PryceText_IcyWindSpeech:
 	para "It demonstrates"
 	line "the harshness of"
 	cont "winter."
+
+	para "Use it with care,"
+	line "not anger."
 	done
 
 PryceText_CherishYourPokemon:
@@ -234,8 +280,63 @@ PryceText_CherishYourPokemon:
 	para "gether for many"
 	line "years to come."
 
+	para "LITTLE especially"
+	line "seems close to"
+	cont "your heart."
+
 	para "Cherish your time"
 	line "together!"
+	done
+
+PryceRematchIntroText:
+	text "You have returned."
+
+	para "I heard that you"
+	line "became CHAMPION."
+
+	para "That path is not"
+	line "walked by those"
+	cont "who give up."
+
+	para "Since our battle,"
+	line "I have trained in"
+	cont "deeper cold."
+
+	para "My #MON and I"
+	line "have endured many"
+	cont "hard winters."
+
+	para "Now, let this old"
+	line "man test you once"
+	cont "more."
+	done
+
+PryceRematchWinText:
+	text "Ah..."
+
+	para "Even winter must"
+	line "yield to spring."
+
+	para "You and LITTLE"
+	line "have grown strong"
+	cont "together."
+
+	para "That is a strength"
+	line "age alone cannot"
+	cont "teach."
+	done
+
+PryceRematchAfterText:
+	text "I will continue"
+	line "training with my"
+	cont "#MON."
+
+	para "Return whenever"
+	line "you wish."
+
+	para "Each battle is"
+	line "another lesson in"
+	cont "life."
 	done
 
 BoarderRonaldSeenText:

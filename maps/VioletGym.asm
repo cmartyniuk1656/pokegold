@@ -47,9 +47,25 @@ VioletGymFalknerScript:
 	end
 
 .SpeechAfterTM:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
 	writetext FalknerFightDoneText
 	waitbutton
 .NoRoomForMudSlap:
+	closetext
+	end
+
+.Rematch:
+	writetext FalknerRematchIntroText
+	waitbutton
+	closetext
+	winlosstext FalknerRematchWinText, 0
+	loadtrainer FALKNER, FALKNER2
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext FalknerRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -111,32 +127,36 @@ VioletGymStatue:
 	jumpstd GymStatue2Script
 
 FalknerIntroText:
-	text "I'm FALKNER, the"
-	line "VIOLET #MON GYM"
-	cont "leader!"
+	text "I am FALKNER, the"
+	line "VIOLET CITY GYM"
+	cont "LEADER."
 
-	para "People say you can"
-	line "clip flying-type"
+	para "Your LITTLE looks"
+	line "even weaker than"
+	cont "YOU!"
 
-	para "#MON's wings"
-	line "with a jolt of"
-	cont "electricity…"
+	para "My flying #MON"
+	line "will feast on his"
+	cont "defeat!"
 
-	para "I won't allow such"
-	line "insults to bird"
-	cont "#MON!"
+	para "No more messing"
+	line "around."
 
-	para "I'll show you the"
-	line "real power of the"
-
-	para "magnificent bird"
-	line "#MON!"
+	para "I'll beat you"
+	line "down from the"
+	cont "skies!"
 	done
 
 FalknerWinLossText:
 	text "…Darn! My Dad's"
 	line "cherished bird"
 	cont "#MON…"
+
+	para "Your LITTLE is"
+	line "a little brat."
+
+	para "You battled with"
+	line "real strength."
 
 	para "All right."
 	line "Take this."
@@ -161,6 +181,13 @@ FalknerZephyrBadgeText:
 
 	para "FLASH, if they"
 	line "have it, anytime."
+
+	para "CHRIS would tell"
+	line "you not to mess"
+	cont "around with it."
+
+	para "Use that power"
+	line "wisely."
 
 	para "Here--take this"
 	line "too."
@@ -189,6 +216,13 @@ FalknerTMMudSlapText:
 	para "In other words, it"
 	line "is both defensive"
 	cont "and offensive."
+
+	para "It may not look as"
+	line "flashy as LITTLE,"
+
+	para "but a smart move"
+	line "can beat you down"
+	cont "all the same."
 	done
 
 FalknerFightDoneText:
@@ -200,11 +234,86 @@ FalknerFightDoneText:
 	line "your skills at"
 	cont "these GYMS."
 
+	para "Do not spend your"
+	line "journey just"
+	cont "messing around."
+
+	para "You and LITTLE"
+	line "have rare talent."
+
 	para "I'm going to train"
 	line "harder to become"
 
 	para "the greatest bird"
 	line "master!"
+
+	para "One day, even"
+	line "CHRIS will know"
+	cont "my name!"
+	done
+
+FalknerRematchIntroText:
+	text "You've returned."
+
+	para "Since you beat the"
+	line "#MON LEAGUE,"
+
+	para "people say you and"
+	line "LITTLE are flying"
+	cont "higher than ever."
+
+	para "But I have not"
+	line "been idle."
+
+	para "I trained my bird"
+	line "#MON until their"
+	cont "wings shook!"
+
+	para "Even CHRIS would"
+	line "expect me to give"
+	cont "you a real fight."
+
+	para "So stop messing"
+	line "around!"
+
+	para "This time, I'll"
+	line "beat you down"
+	cont "from the sky!"
+	done
+
+FalknerRematchWinText:
+	text "…Again?"
+
+	para "Even after all my"
+	line "training, your"
+
+	para "LITTLE soars past"
+	line "us."
+
+	para "I understand now."
+
+	para "You did not become"
+	line "CHAMPION by"
+	cont "messing around."
+
+	para "That was a battle"
+	line "worthy of CHRIS"
+	cont "himself."
+	done
+
+FalknerRematchAfterText:
+	text "I will never stop"
+	line "training my bird"
+	cont "#MON."
+
+	para "Challenge me any"
+	line "time."
+
+	para "If you start"
+	line "messing around,"
+
+	para "I'll be ready to"
+	line "beat you down!"
 	done
 
 BirdKeeperRodSeenText:

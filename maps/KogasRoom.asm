@@ -45,16 +45,32 @@ KogaScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_KOGA
 	iftrue KogaScript_AfterBattle
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .Rematch
 	writetext KogaScript_KogaBeforeText
 	waitbutton
 	closetext
 	winlosstext KogaScript_KogaBeatenText, 0
 	loadtrainer KOGA, KOGA1
+	sjump .StartBattle
+.Rematch:
+	writetext KogaScript_RematchBeforeText
+	waitbutton
+	closetext
+	winlosstext KogaScript_RematchBeatenText, 0
+	loadtrainer KOGA, KOGA2
+.StartBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_KOGA
 	opentext
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext KogaScript_KogaDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext KogaScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -66,7 +82,13 @@ KogaScript_Battle:
 	end
 
 KogaScript_AfterBattle:
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext KogaScript_KogaDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext KogaScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	end
@@ -98,6 +120,13 @@ KogaScript_KogaBeforeText:
 	line "victim of my sin-"
 	cont "ister technique!"
 
+	para "That LITTLE may"
+	line "look harmless..."
+
+	para "But even a little"
+	line "brat can fall to"
+	cont "poison!"
+
 	para "Fwahahahaha!"
 
 	para "#MON is not"
@@ -118,13 +147,81 @@ KogaScript_KogaDefeatText:
 	line "everything I could"
 	cont "muster."
 
-	para "But my efforts"
-	line "failed. I must"
-	cont "hone my skills."
+	para "But you and LITTLE"
+	line "endured my"
+	cont "techniques."
+
+	para "My efforts failed."
+	line "I must hone my"
+	cont "skills."
 
 	para "Go on to the next"
 	line "room, and put your"
 	cont "abilities to test!"
+	done
+
+KogaScript_RematchBeforeText:
+	text "Fwahahahaha!"
+
+	para "You return with"
+	line "all 16 BADGES."
+
+	para "A trainer who has"
+	line "crossed two lands"
+	cont "is no easy prey."
+
+	para "Since our last"
+	line "battle, I have"
+
+	para "sharpened every"
+	line "technique."
+
+	para "My poisons creep"
+	line "deeper."
+
+	para "My shadows move"
+	line "faster."
+
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "respect the art"
+	cont "of a true ninja!"
+
+	para "Now, <PLAYER>..."
+
+	para "Let us see if you"
+	line "can escape my"
+	cont "web once more!"
+	done
+
+KogaScript_RematchBeatenText:
+	text "Ah!"
+	line "Even my finest"
+	cont "arts failed!"
+	done
+
+KogaScript_RematchDefeatText:
+	text "You pierced every"
+	line "shadow I cast."
+
+	para "Your LITTLE moved"
+	line "through my traps"
+	cont "with sharp senses."
+
+	para "A ninja must never"
+	line "stop improving."
+
+	para "I will vanish,"
+	line "train, and return"
+	cont "stronger."
+
+	para "Go on."
+
+	para "The next battle"
+	line "will test you in"
+	cont "a different way."
 	done
 
 KogasRoom_MapEvents:

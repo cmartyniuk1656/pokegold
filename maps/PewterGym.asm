@@ -27,6 +27,7 @@ PewterGymBrockScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
+	farscall MaybeCallOakAfter16Badges
 	writetext BrockBoulderBadgeText
 	waitbutton
 	closetext
@@ -36,6 +37,16 @@ PewterGymBrockScript:
 	writetext BrockFightDoneText
 	waitbutton
 	closetext
+	end
+
+MaybeCallOakAfter16Badges:
+	checkevent EVENT_OAK_CALLED_ABOUT_ELITE_FOUR_REMATCH
+	iftrue .Done
+	readvar VAR_BADGES
+	ifnotequal NUM_BADGES, .Done
+	setevent EVENT_OAK_CALLED_ABOUT_ELITE_FOUR_REMATCH
+	specialphonecall SPECIALCALL_OAK_ELITE_FOUR_REMATCH
+.Done:
 	end
 
 TrainerCamperJerry:

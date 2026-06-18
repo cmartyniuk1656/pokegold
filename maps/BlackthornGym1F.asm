@@ -71,7 +71,7 @@ BlackthornGymClairScript:
 
 .AlreadyGotBadge:
 	checkevent EVENT_GOT_TM24_DRAGONBREATH
-	iftrue .GotTM24
+	iftrue .CheckRematch
 	writetext BlackthornGymClairText_YouKeptMeWaiting
 	promptbutton
 	verbosegiveitem TM_DRAGONBREATH
@@ -82,11 +82,28 @@ BlackthornGymClairScript:
 	closetext
 	end
 
+.CheckRematch:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
 .GotTM24:
 	writetext BlackthornGymClairText_League
 	waitbutton
 
 .BagFull:
+	closetext
+	end
+
+.Rematch:
+	writetext ClairRematchIntroText
+	waitbutton
+	closetext
+	winlosstext ClairRematchWinText, 0
+	loadtrainer CLAIR, CLAIR2
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext ClairRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -158,6 +175,14 @@ ClairIntroText:
 	para "#MON LEAGUE's"
 	line "ELITE FOUR."
 
+	para "So this is the"
+	line "famous LITTLE..."
+
+	para "Cute, I suppose."
+
+	para "But dragons do not"
+	line "bow to cuteness."
+
 	para "Do you still want"
 	line "to take me on?"
 
@@ -177,6 +202,9 @@ ClairWinText:
 	para "I don't believe"
 	line "it. There must be"
 	cont "some mistake…"
+
+	para "I did not lose to"
+	line "that LITTLE..."
 	done
 
 ClairText_GoToDragonsDen:
@@ -188,6 +216,10 @@ ClairText_GoToDragonsDen:
 
 	para "not ready for the"
 	line "#MON LEAGUE."
+
+	para "Do not look so"
+	line "pleased with"
+	cont "yourself."
 
 	para "I know. You should"
 	line "take the dragon"
@@ -209,10 +241,13 @@ ClairText_GoToDragonsDen:
 	para "a true dragon"
 	line "user."
 
-	para "If you can do"
-	line "that, I will ac-"
-	cont "cept you as a"
-	cont "worthy trainer."
+	para "If you do that,"
+	line "I will accept"
+	cont "you."
+
+	para "Then I will call"
+	line "you a worthy"
+	cont "trainer."
 
 	para "Until then, I"
 	line "won't give you a"
@@ -228,6 +263,10 @@ ClairText_WhatsTheMatter:
 
 	para "unless your vic-"
 	line "tory was a fluke."
+
+	para "Or unless LITTLE"
+	line "is tired from"
+	cont "carrying you."
 	done
 
 BlackthornGymClairText_Cheat:
@@ -240,12 +279,25 @@ BlackthornGymClairText_Cheat:
 
 	para "I'm disappointed"
 	line "in you."
+
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "never respect"
+	cont "such behavior."
 	done
 
 BlackthornGymClairText_YouKeptMeWaiting:
 	text "CLAIR: You have"
 	line "proven yourself to"
 	cont "me."
+
+	para "I still think you"
+	line "were lucky..."
+
+	para "But a promise is"
+	line "a promise."
 
 	para "I want you to have"
 	line "this TM."
@@ -267,6 +319,10 @@ BlackthornGymClairText_DescribeTM24:
 	para "If you don't want"
 	line "it, you don't have"
 	cont "to take it."
+
+	para "Though LITTLE may"
+	line "need something"
+	cont "with real power."
 	done
 
 BlackthornGymClairText_League:
@@ -290,6 +346,9 @@ BlackthornGymClairText_League:
 	line "The route there is"
 	cont "very tough."
 
+	para "Do not start"
+	line "messing around."
+
 	para "Don't you dare"
 	line "lose at the #-"
 	cont "MON LEAGUE!"
@@ -299,6 +358,69 @@ BlackthornGymClairText_League:
 
 	para "about having lost"
 	line "to you!"
+	done
+
+ClairRematchIntroText:
+	text "You came back."
+
+	para "And as CHAMPION,"
+	line "no less."
+
+	para "Do not expect me"
+	line "to be impressed"
+	cont "so easily."
+
+	para "Since our battle,"
+	line "I have trained my"
+
+	para "dragons harder"
+	line "than ever."
+
+	para "Even the legendary"
+	line "trainer CHRIS"
+
+	para "would recognize"
+	line "the pride of a"
+	cont "dragon master."
+
+	para "Now show me if"
+	line "you and LITTLE"
+
+	para "are still worthy"
+	line "of standing here."
+	done
+
+ClairRematchWinText:
+	text "No..."
+
+	para "I lost again?"
+
+	para "My dragons gave"
+	line "everything they"
+	cont "had."
+
+	para "And still, you and"
+	line "LITTLE overcame"
+	cont "them."
+
+	para "…Fine."
+
+	para "I admit it."
+	line "You are strong."
+	done
+
+ClairRematchAfterText:
+	text "I will not make"
+	line "excuses."
+
+	para "A dragon master"
+	line "must keep growing."
+
+	para "Challenge me again"
+	line "whenever you want."
+
+	para "Next time, I will"
+	line "not lose."
 	done
 
 CooltrainermPaulSeenText:

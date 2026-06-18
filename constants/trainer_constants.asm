@@ -22,31 +22,45 @@ DEF CHRIS EQU __trainer_class__
 	const PHONECONTACT_BIKESHOP
 	const PHONECONTACT_BILL
 	const PHONECONTACT_ELM
+	const PHONECONTACT_OAK
 DEF NUM_NONTRAINER_PHONECONTACTS EQU const_value - 1
 
 	trainerclass FALKNER ; 1
 	const FALKNER1
+	const FALKNER2
 
 	trainerclass WHITNEY ; 2
 	const WHITNEY1
+	const WHITNEY2
 
 	trainerclass BUGSY ; 3
 	const BUGSY1
+	const BUGSY2
 
 	trainerclass MORTY ; 4
 	const MORTY1
+	const MORTY2
 
 	trainerclass PRYCE ; 5
 	const PRYCE1
+	const PRYCE2
+	const PRYCE3
+	const PRYCE4
 
 	trainerclass JASMINE ; 6
 	const JASMINE1
+	const JASMINE2
+	const JASMINE3
 
 	trainerclass CHUCK ; 7
 	const CHUCK1
+	const CHUCK2
+	const CHUCK3
+	const CHUCK4
 
 	trainerclass CLAIR ; 8
 	const CLAIR1
+	const CLAIR2
 
 	trainerclass RIVAL1 ; 9
 	const RIVAL1_1_CHIKORITA
@@ -69,6 +83,7 @@ DEF NUM_NONTRAINER_PHONECONTACTS EQU const_value - 1
 
 	trainerclass WILL ; b
 	const WILL1
+	const WILL2
 
 	trainerclass CAL ; c
 	const CAL1 ; unused
@@ -77,15 +92,19 @@ DEF NUM_NONTRAINER_PHONECONTACTS EQU const_value - 1
 
 	trainerclass BRUNO ; d
 	const BRUNO1
+	const BRUNO2
 
 	trainerclass KAREN ; e
 	const KAREN1
+	const KAREN2
 
 	trainerclass KOGA ; f
 	const KOGA1
+	const KOGA2
 
 	trainerclass CHAMPION ; 10
 	const LANCE
+	const LANCE2
 
 	trainerclass BROCK ; 11
 	const BROCK1

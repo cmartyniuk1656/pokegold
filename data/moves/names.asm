@@ -22,7 +22,7 @@ MoveNames::
 	li "BIND"
 	li "SLAM"
 	li "VINE WHIP"
-	li "STOMP"
+	li "POUNCE"
 	li "DOUBLE KICK"
 	li "MEGA KICK"
 	li "JUMP KICK"
