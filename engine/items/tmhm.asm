@@ -36,7 +36,7 @@ ConvertCurItemIntoCurTMHM:
 	ld [wTempTMHM], a
 	ret
 
-GetTMHMItemMove:
+GetTMHMItemMove::
 	call ConvertCurItemIntoCurTMHM
 	predef GetTMHMMove
 	ret

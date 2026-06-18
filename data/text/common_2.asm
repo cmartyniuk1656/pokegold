@@ -203,6 +203,15 @@ _FoundItemText::
 	text "!"
 	done
 
+_FoundTMHMItemText::
+	text "<PLAYER> received"
+	line "@"
+	text_buffer STRING_BUFFER_3
+	text " @"
+	text_ram wStringBuffer1
+	text "."
+	done
+
 _CantCarryItemText::
 	text "But <PLAYER> can't"
 	line "carry any more"
@@ -1345,6 +1354,15 @@ _ReceivedItemText::
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer4
+	text "."
+	done
+
+_ReceivedTMHMItemText::
+	text "<PLAYER> received"
+	line "@"
+	text_buffer STRING_BUFFER_4
+	text " @"
+	text_ram wStringBuffer1
 	text "."
 	done
 

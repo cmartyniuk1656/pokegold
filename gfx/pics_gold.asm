@@ -438,7 +438,6 @@ MareepFrontpic:      INCBIN "gfx/pokemon/mareep/front_gold.2bpp.lz"
 TentacoolBackpic:    INCBIN "gfx/pokemon/tentacool/back.2bpp.lz"
 DoduoFrontpic:       INCBIN "gfx/pokemon/doduo/front_gold.2bpp.lz"
 OmanyteFrontpic:     INCBIN "gfx/pokemon/omanyte/front_gold.2bpp.lz"
-LittleFrontpic:      INCBIN "gfx/pokemon/little/front_gold.2bpp.lz"
 LilporeonBackpic:    INCBIN "gfx/pokemon/lilporeon/back.2bpp.lz"
 ExecutivefPic:       INCBIN "gfx/trainers/executive_f.2bpp.lz"
 PichuBackpic:        INCBIN "gfx/pokemon/pichu/back.2bpp.lz"
@@ -637,6 +636,7 @@ MachampBackpic:      INCBIN "gfx/pokemon/machamp/back.2bpp.lz"
 
 SECTION "Pics 14", ROMX
 
+LittleFrontpic:      INCBIN "gfx/pokemon/little/front_gold.2bpp.lz"
 UnownHFrontpic:      INCBIN "gfx/pokemon/unown_h/front.2bpp.lz"
 DittoFrontpic:       INCBIN "gfx/pokemon/ditto/front_gold.2bpp.lz"
 SnorlaxBackpic:      INCBIN "gfx/pokemon/snorlax/back.2bpp.lz"
