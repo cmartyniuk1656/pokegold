@@ -77,9 +77,25 @@ CianwoodGymChuckScript:
 	end
 
 .AlreadyGotTM:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
 	writetext ChuckAfterText
 	waitbutton
 .BagFull:
+	closetext
+	end
+
+.Rematch:
+	writetext ChuckRematchIntroText
+	waitbutton
+	closetext
+	winlosstext ChuckRematchWinText, 0
+	loadtrainer CHUCK, CHUCK4
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext ChuckRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -170,6 +186,13 @@ ChuckIntroText1:
 	line "crush stones and"
 	cont "shatter bones!"
 
+	para "And that LITTLE?"
+	line "Looks soft!"
+
+	para "But I can tell"
+	line "there's fire in"
+	cont "that tiny body!"
+
 	para "Watch this!"
 	done
 
@@ -190,6 +213,12 @@ ChuckIntroText3:
 	para "do with #MON?"
 	line "That's true!"
 
+	para "But strength is"
+	line "strength!"
+
+	para "No more standing"
+	line "around!"
+
 	para "Come on. We shall"
 	line "do battle!"
 	done
@@ -199,8 +228,13 @@ ChuckLossText:
 	line "I lost?"
 
 	para "How about that!"
-	line "You're worthy of"
-	cont "STORMBADGE!"
+
+	para "You and LITTLE"
+	line "hit harder than"
+	cont "you look!"
+
+	para "You're worthy of"
+	line "STORMBADGE!"
 	done
 
 GetStormBadgeText:
@@ -221,6 +255,13 @@ ChuckExplainBadgeText:
 	para "when you're not in"
 	line "a battle."
 
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "respect that kind"
+	cont "of strength!"
+
 	para "Here, take this"
 	line "too!"
 	done
@@ -234,6 +275,9 @@ ChuckExplainTMText:
 
 	para "does, it causes"
 	line "confusion!"
+
+	para "A risky move!"
+	line "But I like risk!"
 	done
 
 ChuckAfterText:
@@ -246,6 +290,58 @@ ChuckAfterText:
 	para "From now on, I'm"
 	line "going to train 24"
 	cont "hours a day!"
+	done
+
+ChuckRematchIntroText:
+	text "WAHAHAH!"
+
+	para "The CHAMPION has"
+	line "returned!"
+
+	para "I've trained every"
+	line "day since our"
+	cont "last battle!"
+
+	para "I lifted boulders!"
+	line "I punched waves!"
+
+	para "I even tried to"
+	line "outrun my own"
+	cont "shadow!"
+
+	para "And now you and"
+	line "LITTLE are back!"
+
+	para "Good!"
+
+	para "Let's see whose"
+	line "training wins!"
+	done
+
+ChuckRematchWinText:
+	text "WAHAHAH!"
+
+	para "I lost again!"
+
+	para "Your strength is"
+	line "no trick."
+
+	para "Even my toughest"
+	line "#MON felt that!"
+	done
+
+ChuckRematchAfterText:
+	text "A strong trainer"
+	line "always returns!"
+
+	para "Challenge me any"
+	line "time!"
+
+	para "I'll be training"
+	line "until the walls"
+	cont "shake!"
+
+	para "WAHAHAH!"
 	done
 
 BlackbeltYoshiSeenText:

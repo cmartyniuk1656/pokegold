@@ -73,9 +73,25 @@ GoldenrodGymWhitneyScript:
 	end
 
 .GotAttract:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
 	writetext WhitneyGoodCryText
 	waitbutton
 .NoRoomForAttract:
+	closetext
+	end
+
+.Rematch:
+	writetext WhitneyRematchIntroText
+	waitbutton
+	closetext
+	winlosstext WhitneyRematchWinText, 0
+	loadtrainer WHITNEY, WHITNEY2
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext WhitneyRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -192,6 +208,16 @@ WhitneyBeforeText:
 	para "#MON are"
 	line "super-cute!"
 
+	para "Oh! Your LITTLE"
+	line "is adorable!"
+
+	para "Maybe even cuter"
+	line "than my #MON..."
+
+	para "Wait, no way!"
+	line "Mine are still"
+	cont "the cutest!"
+
 	para "You want to bat-"
 	line "tle? I'm warning"
 	cont "you--I'm good!"
@@ -215,6 +241,10 @@ WhitneyYouMeanieText:
 
 	para "…Snivel, hic…"
 	line "…You meanie!"
+
+	para "And LITTLE just"
+	line "stood there being"
+	cont "all cute!"
 	done
 
 WhitneyWhatDoYouWantText:
@@ -244,6 +274,12 @@ WhitneyPlainBadgeText:
 	line "your #MON's"
 	cont "SPEED."
 
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "want a fast team!"
+
 	para "Oh, you can have"
 	line "this too!"
 	done
@@ -258,14 +294,72 @@ WhitneyAttractText:
 	para "Isn't it just per-"
 	line "fect for a cutie"
 	cont "like me?"
+
+	para "Or maybe for"
+	line "LITTLE too..."
 	done
 
 WhitneyGoodCryText:
 	text "Ah, that was a"
 	line "good cry!"
 
+	para "Your LITTLE really"
+	line "is super-cute."
+
 	para "Come for a visit"
 	line "again! Bye-bye!"
+	done
+
+WhitneyRematchIntroText:
+	text "Hi again!"
+
+	para "You're CHAMPION"
+	line "now, right?"
+
+	para "That's amazing!"
+	line "And LITTLE still"
+	cont "looks so cute!"
+
+	para "But don't think"
+	line "I'll go easy just"
+
+	para "because I like"
+	line "you!"
+
+	para "My #MON are cute,"
+	line "strong, and ready!"
+
+	para "Let's battle!"
+	done
+
+WhitneyRematchWinText:
+	text "Waaaaah!"
+
+	para "I lost again!"
+
+	para "Even after all my"
+	line "training, you and"
+
+	para "LITTLE are still"
+	line "too good!"
+
+	para "…Sniff…"
+
+	para "Okay, okay."
+	line "That was actually"
+	cont "kind of fun."
+	done
+
+WhitneyRematchAfterText:
+	text "I got my crying"
+	line "out already!"
+
+	para "Come battle me"
+	line "again anytime."
+
+	para "And bring LITTLE!"
+	line "I want to see"
+	cont "that cutie again!"
 	done
 
 LassCarrieSeenText:

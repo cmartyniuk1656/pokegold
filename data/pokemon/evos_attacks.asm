@@ -1800,10 +1800,10 @@ LittleEvosAttacks:
 	db 4, TAIL_WHIP
 	db 8, DEMAND_FOOD
 	db 14, BITE
-	db 19, METAL_CLAW
-	db 24, SLASH
+	db 19, STOMP
+	db 24, METAL_CLAW
 	db 30, THUNDER_FANG
-	db 35, RETURN
+	db 35, SLASH
 	db 40, SHADOW_BALL
 	db 45, EARTHQUAKE
 	db 50, CAT_NAP

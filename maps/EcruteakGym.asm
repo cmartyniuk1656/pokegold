@@ -50,9 +50,25 @@ EcruteakGymMortyScript:
 	end
 
 .GotShadowBall:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
 	writetext MortyFightDoneText
 	waitbutton
 .NoRoomForShadowBall:
+	closetext
+	end
+
+.Rematch:
+	writetext MortyRematchIntroText
+	waitbutton
+	closetext
+	winlosstext MortyRematchWinText, 0
+	loadtrainer MORTY, MORTY2
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext MortyRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -160,6 +176,13 @@ MortyIntroText:
 	line "now see what"
 	cont "others cannot."
 
+	para "Your LITTLE..."
+	line "There is something"
+	cont "unusual there."
+
+	para "A small body, but"
+	line "a bright spirit."
+
 	para "Just a bit more…"
 
 	para "With a little"
@@ -177,6 +200,10 @@ MortyIntroText:
 MortyWinLossText:
 	text "I'm not good"
 	line "enough yet…"
+
+	para "Your bond with"
+	line "LITTLE is clearer"
+	cont "than I expected."
 
 	para "All right. This"
 	line "BADGE is yours."
@@ -200,6 +227,13 @@ MortyText_FogBadgeSpeech:
 	para "able to use that"
 	line "move anytime."
 
+	para "The legendary"
+	line "trainer CHRIS"
+
+	para "must have known"
+	line "how far trust can"
+	cont "carry a trainer."
+
 	para "I want you to have"
 	line "this too."
 	done
@@ -210,6 +244,10 @@ MortyText_ShadowBallSpeech:
 
 	para "and may reduce"
 	line "SPCL.DEF."
+
+	para "It suits #MON"
+	line "that move through"
+	cont "darkness."
 
 	para "Use it if it"
 	line "appeals to you."
@@ -226,8 +264,69 @@ MortyFightDoneText:
 	line "nessed much more"
 	cont "than I."
 
+	para "You and LITTLE"
+	line "may see things I"
+	cont "still cannot."
+
 	para "I envy you for"
 	line "that…"
+	done
+
+MortyRematchIntroText:
+	text "You have returned."
+
+	para "Since you became"
+	line "CHAMPION, I have"
+
+	para "continued my"
+	line "training."
+
+	para "The future is"
+	line "still clouded..."
+
+	para "But I can sense"
+	line "your strength more"
+	cont "clearly now."
+
+	para "Even LITTLE's"
+	line "spirit casts a"
+	cont "long shadow."
+
+	para "Let me see what"
+	line "lies beyond this"
+	cont "battle."
+	done
+
+MortyRematchWinText:
+	text "So this is the"
+	line "power that carried"
+	cont "you so far..."
+
+	para "I trained to see"
+	line "the future,"
+
+	para "but you and LITTLE"
+	line "keep changing it."
+
+	para "Perhaps that is"
+	line "what true strength"
+	cont "really is."
+	done
+
+MortyRematchAfterText:
+	text "I will remain here"
+	line "and continue my"
+	cont "training."
+
+	para "The legendary"
+	line "#MON may still"
+	cont "appear one day."
+
+	para "Come again."
+
+	para "Each battle helps"
+	line "me see a little"
+	cont "farther."
 	done
 
 SageJeffreySeenText:

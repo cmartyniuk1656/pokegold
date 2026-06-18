@@ -353,8 +353,8 @@ VineWhipDescription:
 	next "slender vines.@"
 
 StompDescription:
-	db   "An attack that may"
-	next "cause flinching.@"
+	db   "Pounces on the foe"
+	next "May make it flinch.@"
 
 DoubleKickDescription:
 	db   "A double kicking"

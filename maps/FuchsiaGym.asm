@@ -39,6 +39,7 @@ FuchsiaGymJanineScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_SOULBADGE
+	farscall MaybeCallOakAfter16Badges
 	sjump .AfterBattle
 .FightDone:
 	faceplayer

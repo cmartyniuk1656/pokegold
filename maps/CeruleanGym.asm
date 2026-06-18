@@ -77,6 +77,7 @@ CeruleanGymMistyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
+	farscall MaybeCallOakAfter16Badges
 .FightDone:
 	writetext MistyFightDoneText
 	waitbutton

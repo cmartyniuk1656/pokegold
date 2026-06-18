@@ -32,6 +32,7 @@ SeafoamGymBlaineScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
+	farscall MaybeCallOakAfter16Badges
 	writetext BlaineAfterBattleText
 	waitbutton
 	closetext

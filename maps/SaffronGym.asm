@@ -33,6 +33,7 @@ SaffronGymSabrinaScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MARSHBADGE
+	farscall MaybeCallOakAfter16Badges
 	writetext SabrinaMarshBadgeText
 	waitbutton
 	closetext

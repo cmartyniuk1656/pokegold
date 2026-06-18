@@ -1053,6 +1053,16 @@ ElmGiveTicketText1:
 
 	para "Now you can catch"
 	line "#MON in KANTO."
+
+	para "One more thing."
+
+	para "Your victory also"
+	line "inspired JOHTO's"
+	cont "GYM LEADERS."
+
+	para "They are ready"
+	line "for rematches"
+	cont "now."
 	done
 
 ElmGiveTicketText2:
@@ -1065,6 +1075,12 @@ ElmGiveTicketText2:
 	para "After all, you've"
 	line "traveled all over"
 	cont "with your #MON."
+
+	para "Visit any JOHTO"
+	line "GYM LEADER."
+
+	para "They will battle"
+	line "you again now."
 
 	para "Give my regards to"
 	line "PROF.OAK in KANTO!"

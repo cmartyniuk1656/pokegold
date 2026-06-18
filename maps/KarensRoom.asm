@@ -45,16 +45,32 @@ KarenScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue KarenScript_AfterBattle
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .Rematch
 	writetext KarenScript_KarenBeforeText
 	waitbutton
 	closetext
 	winlosstext KarenScript_KarenBeatenText, 0
 	loadtrainer KAREN, KAREN1
+	sjump .StartBattle
+.Rematch:
+	writetext KarenScript_RematchBeforeText
+	waitbutton
+	closetext
+	winlosstext KarenScript_RematchBeatenText, 0
+	loadtrainer KAREN, KAREN2
+.StartBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_KAREN
 	opentext
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext KarenScript_KarenDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext KarenScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -66,7 +82,13 @@ KarenScript_Battle:
 	end
 
 KarenScript_AfterBattle:
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext KarenScript_KarenDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext KarenScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	end
@@ -94,8 +116,17 @@ KarenScript_KarenBeforeText:
 	para "so appealing. And"
 	line "they're so strong."
 
+	para "That LITTLE of"
+	line "yours..."
+
+	para "Cute, certainly."
+
+	para "But I can tell"
+	line "there is mischief"
+	cont "behind those eyes."
+
 	para "Think you can take"
-	line "them? Just try to"
+	line "my #MON? Just try"
 	cont "entertain me."
 
 	para "Let's go."
@@ -122,12 +153,85 @@ KarenScript_KarenDefeatText:
 	para "try to win with"
 	line "their favorites."
 
+	para "You and LITTLE"
+	line "understand that"
+	cont "very well."
+
 	para "I like your style."
 	line "You understand"
 	cont "what's important."
 
 	para "Go on--the CHAM-"
 	line "PION is waiting."
+	done
+
+KarenScript_RematchBeforeText:
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "All 16 BADGES..."
+	line "How impressive."
+
+	para "You have crossed"
+	line "two regions and"
+
+	para "still battle with"
+	line "your favorite."
+
+	para "That is rare."
+
+	para "Many trainers"
+	line "chase power and"
+	cont "forget style."
+
+	para "But you and LITTLE"
+	line "still have both."
+
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "understand that."
+
+	para "Now then..."
+
+	para "Show me how much"
+	line "your favorites"
+	cont "have grown."
+
+	para "Let's go."
+	done
+
+KarenScript_RematchBeatenText:
+	text "Well done."
+
+	para "You really do know"
+	line "how to make a"
+	cont "battle exciting."
+	done
+
+KarenScript_RematchDefeatText:
+	text "Strong #MON."
+
+	para "Weak #MON."
+
+	para "Those words still"
+	line "miss the point."
+
+	para "What matters is"
+	line "how a trainer"
+	cont "chooses to battle."
+
+	para "You and LITTLE"
+	line "battle with trust,"
+	cont "style, and nerve."
+
+	para "I like that."
+
+	para "Go on."
+
+	para "The CHAMPION is"
+	line "waiting again."
 	done
 
 KarensRoom_MapEvents:

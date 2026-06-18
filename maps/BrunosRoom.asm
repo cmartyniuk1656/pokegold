@@ -45,16 +45,32 @@ BrunoScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue BrunoScript_AfterBattle
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .Rematch
 	writetext BrunoScript_BrunoBeforeText
 	waitbutton
 	closetext
 	winlosstext BrunoScript_BrunoBeatenText, 0
 	loadtrainer BRUNO, BRUNO1
+	sjump .StartBattle
+.Rematch:
+	writetext BrunoScript_RematchBeforeText
+	waitbutton
+	closetext
+	winlosstext BrunoScript_RematchBeatenText, 0
+	loadtrainer BRUNO, BRUNO2
+.StartBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_BRUNO
 	opentext
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext BrunoScript_BrunoDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext BrunoScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -66,7 +82,13 @@ BrunoScript_Battle:
 	end
 
 BrunoScript_AfterBattle:
+	readvar VAR_BADGES
+	ifequal NUM_BADGES, .RematchDefeat
 	writetext BrunoScript_BrunoDefeatText
+	sjump .Finish
+.RematchDefeat:
+	writetext BrunoScript_RematchDefeatText
+.Finish:
 	waitbutton
 	closetext
 	end
@@ -84,8 +106,9 @@ BrunoScript_BrunoBeforeText:
 
 	para "I always train to"
 	line "the extreme be-"
-	cont "cause I believe in"
-	cont "our potential."
+
+	para "cause I believe in"
+	line "our potential."
 
 	para "That is how we"
 	line "became strong."
@@ -98,6 +121,12 @@ BrunoScript_BrunoBeforeText:
 
 	para "determined. Per-"
 	line "fect for battle!"
+
+	para "Your LITTLE is"
+	line "small, but its"
+	cont "stance is firm."
+
+	para "Good."
 
 	para "Ready, <PLAYER>?"
 	line "You will bow down"
@@ -118,8 +147,72 @@ BrunoScript_BrunoDefeatText:
 	line "have no right to"
 	cont "say anything…"
 
+	para "You and LITTLE"
+	line "proved your"
+	cont "strength."
+
 	para "Go face your next"
 	line "challenge!"
+	done
+
+BrunoScript_RematchBeforeText:
+	text "I am BRUNO of the"
+	line "ELITE FOUR."
+
+	para "You return with"
+	line "all 16 BADGES."
+
+	para "Good."
+
+	para "A trainer only"
+	line "reaches that point"
+
+	para "through discipline"
+	line "and focus."
+
+	para "Since our battle,"
+	line "I have trained"
+	cont "without rest."
+
+	para "My body is harder."
+	line "My spirit is"
+	cont "sharper."
+
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "respect such"
+	cont "devotion."
+
+	para "Now show me your"
+	line "full power!"
+
+	para "Hoo hah!"
+	done
+
+BrunoScript_RematchBeatenText:
+	text "Why? Even after"
+	line "all my training?"
+	done
+
+BrunoScript_RematchDefeatText:
+	text "I understand."
+
+	para "Power is not only"
+	line "muscle."
+
+	para "You and LITTLE"
+	line "fight as one."
+
+	para "That is why you"
+	line "broke through our"
+	cont "strength."
+
+	para "I will train more."
+
+	para "Go. Your next"
+	line "challenge awaits!"
 	done
 
 BrunosRoom_MapEvents:

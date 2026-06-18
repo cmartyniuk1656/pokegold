@@ -25,6 +25,7 @@ ViridianGymBlueScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_EARTHBADGE
+	farscall MaybeCallOakAfter16Badges
 	writetext LeaderBlueAfterText
 	waitbutton
 	closetext

@@ -33,6 +33,7 @@ CeladonGymErikaScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_RAINBOWBADGE
+	farscall MaybeCallOakAfter16Badges
 .FightDone:
 	checkevent EVENT_GOT_TM19_GIGA_DRAIN
 	iftrue .GotGigaDrain

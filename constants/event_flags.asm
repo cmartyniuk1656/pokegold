@@ -982,7 +982,10 @@
 	const EVENT_BEAT_ELITE_4_BRUNO
 	const EVENT_BEAT_ELITE_4_KAREN
 	const EVENT_BEAT_CHAMPION_LANCE
-; Unused: next 131 events
+	const EVENT_BEAT_ELITE_FOUR_REMATCH
+	const EVENT_OAK_CALLED_ABOUT_ELITE_FOUR_REMATCH
+	const EVENT_OAK_CALLED_ABOUT_MT_SILVER
+; Unused: next 128 events
 
 	const_next 1600
 ; Sprite visibility flags

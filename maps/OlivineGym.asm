@@ -47,9 +47,25 @@ OlivineGymJasmineScript:
 	end
 
 .GotIronTail:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Rematch
 	writetext Jasmine_GoodLuck
 	waitbutton
 .NoRoomForIronTail:
+	closetext
+	end
+
+.Rematch:
+	writetext JasmineRematchIntroText
+	waitbutton
+	closetext
+	winlosstext JasmineRematchWinText, 0
+	loadtrainer JASMINE, JASMINE3
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext JasmineRematchAfterText
+	waitbutton
 	closetext
 	end
 
@@ -120,6 +136,14 @@ Jasmine_SteelTypeIntro:
 	line "was only recently"
 	cont "discovered."
 
+	para "Your LITTLE seems"
+	line "very precious to"
+	cont "you..."
+
+	para "Steel #MON are"
+	line "strong because"
+	cont "they endure."
+
 	para "…Um… May I begin?"
 	done
 
@@ -129,6 +153,9 @@ Jasmine_BetterTrainer:
 
 	para "in both skill and"
 	line "kindness."
+
+	para "Your LITTLE trusts"
+	line "you very much."
 
 	para "In accordance with"
 	line "LEAGUE rules, I"
@@ -147,6 +174,13 @@ Jasmine_BadgeSpeech:
 	line "raises #MON's"
 	cont "DEFENSE."
 
+	para "Even CHRIS the"
+	line "greatest trainer"
+
+	para "of all time would"
+	line "value a strong"
+	cont "defense..."
+
 	para "…Um… Please take"
 	line "this too…"
 	done
@@ -160,12 +194,81 @@ Jasmine_IronTailSpeech:
 	text "…You could use"
 	line "that TM to teach"
 	cont "IRON TAIL."
+
+	para "It is strong, but"
+	line "not always easy"
+	cont "to use..."
+
+	para "Please choose"
+	line "carefully."
 	done
 
 Jasmine_GoodLuck:
 	text "Um… I don't know"
 	line "how to say this,"
 	cont "but good luck…"
+
+	para "Please take care"
+	line "of LITTLE too..."
+	done
+
+JasmineRematchIntroText:
+	text "…Welcome back."
+
+	para "I heard that you"
+	line "became CHAMPION."
+
+	para "That must have"
+	line "taken great"
+	cont "strength..."
+
+	para "Since then, I have"
+	line "continued training"
+
+	para "my steel #MON."
+
+	para "They are calm,"
+	line "steady, and much"
+	cont "stronger now."
+
+	para "Your LITTLE looks"
+	line "as determined as"
+	cont "ever..."
+
+	para "…Um… If you are"
+	line "ready, may we"
+	cont "begin?"
+	done
+
+JasmineRematchWinText:
+	text "…I lost again."
+
+	para "But I can feel"
+	line "that my #MON have"
+	cont "grown stronger."
+
+	para "Your strength is"
+	line "different from"
+	cont "steel..."
+
+	para "It is warmer."
+
+	para "You and LITTLE"
+	line "battle with a very"
+	cont "strong bond."
+	done
+
+JasmineRematchAfterText:
+	text "I will continue"
+	line "training here with"
+	cont "my steel #MON."
+
+	para "Please visit again"
+	line "whenever you like."
+
+	para "A battle with you"
+	line "and LITTLE teaches"
+	cont "me a lot..."
 	done
 
 OlivineGymGuideText:
