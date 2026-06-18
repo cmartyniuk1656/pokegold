@@ -11,8 +11,19 @@ DoPlayerMovement::
 	ret
 
 .GetDPad:
+	ld a, [wInputType]
+	cp AUTO_INPUT
+	jr z, .auto_input
+	ldh a, [hJoypadDown]
+	jr .got_input
+
+.auto_input
 	ldh a, [hJoyDown]
+
+.got_input
 	ld [wCurInput], a
+	call UpdatePlayerRunInput
+	ld a, [wCurInput]
 
 ; Standing downhill instead moves down.
 
@@ -218,8 +229,7 @@ DoPlayerMovement::
 	ret
 
 .continue_walk
-	ld a, STEP_WALK
-	call .DoStep
+	call .DoWalkStep
 	ld a, PLAYERMOVEMENT_CONTINUE
 	scf
 	ret
@@ -242,6 +252,9 @@ DoPlayerMovement::
 	maskbits NUM_DIRECTIONS
 	cp e
 	jr z, .not_turning
+	ld a, [wPlayerRunInput]
+	and a
+	jr nz, .not_turning
 
 	ld a, STEP_TURN
 	call .DoStep
@@ -298,8 +311,7 @@ DoPlayerMovement::
 	ret
 
 .walk
-	ld a, STEP_WALK
-	call .DoStep
+	call .DoWalkStep
 	scf
 	ret
 
@@ -333,16 +345,14 @@ DoPlayerMovement::
 	and a
 	jr nz, .ExitWater
 
-	ld a, STEP_WALK
-	call .DoStep
+	call .DoWalkStep
 	scf
 	ret
 
 .ExitWater:
 	call .GetOutOfWater
 	call PlayMapMusic
-	ld a, STEP_WALK
-	call .DoStep
+	call .DoWalkStep
 	ld a, PLAYERMOVEMENT_EXIT_WATER
 	scf
 	ret
@@ -459,6 +469,16 @@ DoPlayerMovement::
 
 	ld a, PLAYERMOVEMENT_FINISH
 	ret
+
+.DoWalkStep:
+	ld a, [wPlayerRunInput]
+	and a
+	ld a, STEP_WALK
+	jr z, .got_step
+	ld a, STEP_BIKE
+
+.got_step
+	jp .DoStep
 
 .Steps:
 ; entries correspond to STEP_* constants (see constants/map_object_constants.asm)
@@ -813,4 +833,59 @@ StopPlayerForEvent::
 	ld [hl], a
 	ld a, 0
 	ld [wPlayerTurningDirection], a
+	ret
+
+UpdatePlayerRunInput::
+	ld a, [wInputType]
+	cp AUTO_INPUT
+	jr z, .auto_run_input
+
+	ldh a, [hJoypadDown]
+	and PAD_B
+	jr nz, .set_run_input
+	ldh a, [hJoyDown]
+	and PAD_B
+	jr nz, .set_run_input
+	ldh a, [hJoypadPressed]
+	and PAD_B
+	jr nz, .set_run_input
+	ldh a, [hJoyPressed]
+	and PAD_B
+	jr nz, .set_run_input
+
+	ld a, [wPlayerRunInput]
+	and a
+	jr nz, .debounce_release
+
+	ldh a, [hJoypadSum]
+	and PAD_B
+	jr nz, .set_run_input
+	jr .clear_run_input
+
+.debounce_release
+	ld hl, wPlayerRunReleaseCount
+	inc [hl]
+	ld a, [hl]
+	cp 4
+	ret c
+	jr .clear_run_input
+
+.auto_run_input
+	ldh a, [hJoyDown]
+	and PAD_B
+	jr z, .clear_run_input
+
+.set_run_input
+	ld a, TRUE
+	ld [wPlayerRunInput], a
+	xor a
+	ld [wPlayerRunReleaseCount], a
+	ret
+
+.clear_run_input
+	xor a
+	ld [wPlayerRunInput], a
+	ld [wPlayerRunReleaseCount], a
+	ld hl, hJoypadSum
+	res B_PAD_B, [hl]
 	ret
