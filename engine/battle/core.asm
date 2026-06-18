@@ -2697,6 +2697,13 @@ IsGymLeaderCommon:
 
 INCLUDE "data/trainers/leaders.asm"
 
+NoBattleItemsAllowed:
+	ld a, [wBattleMode]
+	cp TRAINER_BATTLE
+	jr z, IsGymLeader
+	and a
+	ret
+
 HandlePlayerMonFaint:
 	call FaintYourPokemon
 	ld hl, wEnemyMonHP
@@ -4889,6 +4896,9 @@ BattleMenu_Pack:
 	and a
 	jp nz, .ItemsCantBeUsed
 
+	call NoBattleItemsAllowed
+	jp c, .NoItemsAllowedInBossBattle
+
 	call LoadStandardMenuHeader
 
 	ld a, [wBattleType]
@@ -4933,6 +4943,11 @@ BattleMenu_Pack:
 
 .ItemsCantBeUsed:
 	ld hl, BattleText_ItemsCantBeUsedHere
+	call StdBattleTextbox
+	jp BattleMenu
+
+.NoItemsAllowedInBossBattle:
+	ld hl, BattleText_NoItemsAllowedInBossBattle
 	call StdBattleTextbox
 	jp BattleMenu
 
