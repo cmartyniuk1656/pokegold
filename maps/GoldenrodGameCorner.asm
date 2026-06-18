@@ -4,7 +4,8 @@ DEF GOLDENRODGAMECORNER_TM38_COINS      EQU 5500
 DEF GOLDENRODGAMECORNER_ABRA_COINS      EQU 200
 DEF GOLDENRODGAMECORNER_SANDSHREW_COINS EQU 700
 DEF GOLDENRODGAMECORNER_EKANS_COINS     EQU 700
-DEF GOLDENRODGAMECORNER_DRATINI_COINS   EQU 2100
+DEF GOLDENRODGAMECORNER_PORYGON_COINS   EQU 800
+DEF GOLDENRODGAMECORNER_DRATINI_COINS   EQU 1500
 
 	object_const_def
 	const GOLDENRODGAMECORNER_CLERK
@@ -146,7 +147,8 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	closewindow
 	ifequal 1, .Gold_Abra
 	ifequal 2, .Gold_Ekans
-	ifequal 3, .Gold_Dratini
+	ifequal 3, .Gold_Porygon
+	ifequal 4, .Gold_Dratini
 	sjump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
 .Gold_Abra:
@@ -185,6 +187,24 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	takecoins GOLDENRODGAMECORNER_EKANS_COINS
 	sjump .Gold_Loop
 
+.Gold_Porygon:
+	checkcoins GOLDENRODGAMECORNER_PORYGON_COINS
+	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	readvar VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
+	getmonname STRING_BUFFER_3, PORYGON
+	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
+	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
+	waitbutton
+	setval PORYGON
+	special GameCornerPrizeMonCheckDex
+	givepoke PORYGON, 10
+	takecoins GOLDENRODGAMECORNER_PORYGON_COINS
+	sjump .Gold_Loop
+
 .Gold_Dratini:
 	checkcoins GOLDENRODGAMECORNER_DRATINI_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
@@ -211,10 +231,11 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 .Gold_MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 4 ; items
+	db 5 ; items
 	db "ABRA        200@"
 	db "EKANS       700@"
-	db "DRATINI    2100@"
+	db "PORYGON     800@"
+	db "DRATINI    1500@"
 	db "CANCEL@"
 
 .Silver_Loop:
@@ -225,7 +246,8 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	closewindow
 	ifequal 1, .Silver_Abra
 	ifequal 2, .Silver_Sandshrew
-	ifequal 3, .Silver_Dratini
+	ifequal 3, .Silver_Porygon
+	ifequal 4, .Silver_Dratini
 	sjump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
 .Silver_Abra:
@@ -264,6 +286,24 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	takecoins GOLDENRODGAMECORNER_SANDSHREW_COINS
 	sjump .Silver_Loop
 
+.Silver_Porygon:
+	checkcoins GOLDENRODGAMECORNER_PORYGON_COINS
+	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	readvar VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
+	getmonname STRING_BUFFER_3, PORYGON
+	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
+	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
+	waitbutton
+	setval PORYGON
+	special GameCornerPrizeMonCheckDex
+	givepoke PORYGON, 10
+	takecoins GOLDENRODGAMECORNER_PORYGON_COINS
+	sjump .Silver_Loop
+
 .Silver_Dratini:
 	checkcoins GOLDENRODGAMECORNER_DRATINI_COINS
 	ifequal HAVE_LESS, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
@@ -290,10 +330,11 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 .Silver_MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 4 ; items
+	db 5 ; items
 	db "ABRA        200@"
 	db "SANDSHREW   700@"
-	db "DRATINI    2100@"
+	db "PORYGON     800@"
+	db "DRATINI    1500@"
 	db "CANCEL@"
 
 GoldenrodGameCornerPharmacistScript:
