@@ -43,4 +43,24 @@ GetTMHMMove:
 	ld [wTempTMHM], a
 	ret
 
+GetTMHMItemMoveName::
+	ld a, [wCurItem]
+	cp ITEM_C3
+	jr c, .got_item_number
+	cp ITEM_DC
+	jr c, .skip
+	dec a
+.skip
+	dec a
+.got_item_number
+	sub TM01
+	ld c, a
+	ld hl, TMHMMoves
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld [wNamedObjectIndex], a
+	call GetMoveName
+	ret
+
 INCLUDE "data/moves/tmhm_moves.asm"

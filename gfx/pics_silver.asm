@@ -386,7 +386,6 @@ JasminePic:          INCBIN "gfx/trainers/jasmine.2bpp.lz"
 SlugmaBackpic:       INCBIN "gfx/pokemon/slugma/back.2bpp.lz"
 SeelBackpic:         INCBIN "gfx/pokemon/seel/back.2bpp.lz"
 CuboneFrontpic:      INCBIN "gfx/pokemon/cubone/front_silver.2bpp.lz"
-LittleFrontpic:      INCBIN "gfx/pokemon/little/front_silver.2bpp.lz"
 GrowlitheFrontpic:   INCBIN "gfx/pokemon/growlithe/front_silver.2bpp.lz"
 WhitneyPic:          INCBIN "gfx/trainers/whitney.2bpp.lz"
 QuagsireBackpic:     INCBIN "gfx/pokemon/quagsire/back.2bpp.lz"
@@ -638,6 +637,7 @@ SpinarakFrontpic:    INCBIN "gfx/pokemon/spinarak/front.2bpp.lz"
 
 SECTION "Pics 14", ROMX
 
+LittleFrontpic:      INCBIN "gfx/pokemon/little/front_silver.2bpp.lz"
 OddishFrontpic:      INCBIN "gfx/pokemon/oddish/front_silver.2bpp.lz"
 UnownGFrontpic:      INCBIN "gfx/pokemon/unown_g/front.2bpp.lz"
 UnownHFrontpic:      INCBIN "gfx/pokemon/unown_h/front.2bpp.lz"

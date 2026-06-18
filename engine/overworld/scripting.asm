@@ -431,6 +431,14 @@ Script_verbosegiveitem:
 	ld de, wStringBuffer1
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
+	call CurItemIsTMHM
+	jr nc, .not_tmhm
+	call CurTMHMMoveName
+	ld b, BANK(GiveTMHMItemScript)
+	ld de, GiveTMHMItemScript
+	jp ScriptCall
+
+.not_tmhm
 	ld b, BANK(GiveItemScript)
 	ld de, GiveItemScript
 	jp ScriptCall
@@ -455,6 +463,25 @@ GiveItemScript:
 
 .ReceivedItemText:
 	text_far _ReceivedItemText
+	text_end
+
+GiveTMHMItemScript:
+	callasm GiveItemScript_DummyFunction
+	writetext .ReceivedTMHMItemText
+	iffalse .Full
+	waitsfx
+	specialsound
+	waitbutton
+	itemnotify
+	end
+
+.Full:
+	promptbutton
+	pocketisfull
+	end
+
+.ReceivedTMHMItemText:
+	text_far _ReceivedTMHMItemText
 	text_end
 
 Script_itemnotify:
@@ -508,6 +535,22 @@ CurItemName:
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
 	call GetItemName
+	ret
+
+CurItemIsTMHM:
+	farcall CheckItemPocket
+	ld a, [wItemAttributeValue]
+	cp TM_HM
+	jr nz, .not_tmhm
+	scf
+	ret
+
+.not_tmhm
+	and a
+	ret
+
+CurTMHMMoveName:
+	farcall GetTMHMItemMoveName
 	ret
 
 PutItemInPocketText:
