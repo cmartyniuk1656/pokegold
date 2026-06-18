@@ -300,6 +300,14 @@ BattleText_ItemsCantBeUsedHere:
 	line "used here."
 	prompt
 
+BattleText_NoItemsAllowedInBossBattle:
+	text "Hey quit messing"
+	line "around cheater!"
+
+	para "No items allowed"
+	line "in this fight!"
+	prompt
+
 BattleText_MonIsAlreadyOut:
 	text_ram wBattleMonNickname
 	text_start
