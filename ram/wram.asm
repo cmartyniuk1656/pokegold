@@ -2518,7 +2518,7 @@ wFastShip1FSceneID::                              db
 wFastShipB1FSceneID::                             db
 wMountMoonSquareSceneID::                         db
 
-	ds 197
+	ds 69
 
 wEventFlags:: flag_array NUM_EVENTS
 
