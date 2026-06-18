@@ -368,7 +368,6 @@ KabutoBackpic:       INCBIN "gfx/pokemon/kabuto/back.2bpp.lz"
 VenonatFrontpic:     INCBIN "gfx/pokemon/venonat/front_gold.2bpp.lz"
 MeganiumBackpic:     INCBIN "gfx/pokemon/meganium/back.2bpp.lz"
 MeowthBackpic:       INCBIN "gfx/pokemon/meowth/back.2bpp.lz"
-UnownZBackpic:       INCBIN "gfx/pokemon/unown_z/back.2bpp.lz"
 
 
 SECTION "Pics 9", ROMX
@@ -689,3 +688,4 @@ UnownPBackpic:       INCBIN "gfx/pokemon/unown_p/back.2bpp.lz"
 UnownIFrontpic:      INCBIN "gfx/pokemon/unown_i/front.2bpp.lz"
 UnownRBackpic:       INCBIN "gfx/pokemon/unown_r/back.2bpp.lz"
 UnownRFrontpic:      INCBIN "gfx/pokemon/unown_r/front.2bpp.lz"
+UnownZBackpic:       INCBIN "gfx/pokemon/unown_z/back.2bpp.lz"

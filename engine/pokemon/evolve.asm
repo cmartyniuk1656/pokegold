@@ -48,9 +48,8 @@ EvolveAfterBattle_MasterLoop:
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld a, BANK("Evolutions and Attacks")
+	call GetFarWord
 
 	push hl
 	xor a
@@ -59,14 +58,14 @@ EvolveAfterBattle_MasterLoop:
 	pop hl
 
 .loop
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	and a
 	jr z, EvolveAfterBattle_MasterLoop
 
 	ld b, a
 
 	cp EVOLVE_TRADE
-	jr z, .trade
+	jp z, .trade
 
 	ld a, [wLinkMode]
 	and a
@@ -85,11 +84,13 @@ EvolveAfterBattle_MasterLoop:
 	jp z, .level
 
 	cp EVOLVE_HAPPINESS
-	jr z, .happiness
+	jp z, .happiness
 
 ; EVOLVE_STAT
+	call GetEvosAttacksByte
+	ld b, a
 	ld a, [wTempMonLevel]
-	cp [hl]
+	cp b
 	jp c, .dont_evolve_1
 
 	call IsMonHoldingEverstone
@@ -109,11 +110,13 @@ EvolveAfterBattle_MasterLoop:
 	pop hl
 
 	inc hl
-	cp [hl]
+	ld b, a
+	call GetEvosAttacksByte
+	cp b
 	jp nz, .dont_evolve_2
 
 	inc hl
-	jr .proceed
+	jp .proceed
 
 .happiness
 	ld a, [wTempMonHappiness]
@@ -123,7 +126,7 @@ EvolveAfterBattle_MasterLoop:
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_2
 
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	cp TR_ANYTIME
 	jr z, .proceed
 	cp TR_MORNDAY
@@ -149,7 +152,7 @@ EvolveAfterBattle_MasterLoop:
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_2
 
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	ld b, a
 	inc a
 	jr z, .proceed
@@ -167,7 +170,7 @@ EvolveAfterBattle_MasterLoop:
 	jr .proceed
 
 .item
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	ld b, a
 	ld a, [wCurItem]
 	cp b
@@ -182,7 +185,7 @@ EvolveAfterBattle_MasterLoop:
 	jr .proceed
 
 .level
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	ld b, a
 	ld a, [wTempMonLevel]
 	cp b
@@ -198,7 +201,7 @@ EvolveAfterBattle_MasterLoop:
 
 	push hl
 
-	ld a, [hl]
+	call GetEvosAttacksByte
 	ld [wEvolutionNewSpecies], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
@@ -232,7 +235,7 @@ EvolveAfterBattle_MasterLoop:
 
 	pop hl
 
-	ld a, [hl]
+	call GetEvosAttacksByte
 	ld [wCurSpecies], a
 	ld [wTempMonSpecies], a
 	ld [wEvolutionNewSpecies], a
@@ -420,24 +423,25 @@ LearnLevelMoves:
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld a, BANK("Evolutions and Attacks")
+	call GetFarWord
 
 .skip_evos
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	and a
 	jr nz, .skip_evos
 
 .find_move
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	and a
 	jr z, .done
 
 	ld b, a
+	call GetEvosAttacksByteInc
+	ld c, a
 	ld a, [wCurPartyLevel]
 	cp b
-	ld a, [hli]
+	ld a, c
 	jr nz, .find_move
 
 	push hl
@@ -489,11 +493,10 @@ FillMoves:
 	rl b
 	ld c, a
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld a, BANK("Evolutions and Attacks")
+	call GetFarWord
 .GoToAttacks:
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	and a
 	jr nz, .GoToAttacks
 	jr .GetLevel
@@ -503,7 +506,7 @@ FillMoves:
 .GetMove:
 	inc hl
 .GetLevel:
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	and a
 	jp z, .done
 	ld b, a
@@ -523,7 +526,9 @@ FillMoves:
 .CheckRepeat:
 	ld a, [de]
 	inc de
-	cp [hl]
+	ld b, a
+	call GetEvosAttacksByte
+	cp b
 	jr z, .NextMove
 	dec c
 	jr nz, .CheckRepeat
@@ -558,13 +563,13 @@ FillMoves:
 	pop hl
 
 .LearnMove:
-	ld a, [hl]
+	call GetEvosAttacksByte
 	ld [de], a
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .NextMove
 	push hl
-	ld a, [hl]
+	call GetEvosAttacksByte
 	ld hl, MON_PP - MON_MOVES
 	add hl, de
 	push hl
@@ -602,6 +607,15 @@ EvoFlagAction:
 	pop de
 	ret
 
+GetEvosAttacksByteInc:
+	call GetEvosAttacksByte
+	inc hl
+	ret
+
+GetEvosAttacksByte:
+	ld a, BANK("Evolutions and Attacks")
+	jp GetFarByte
+
 INCLUDE "engine/movie/evolution_animation.asm"
 
 GetPreEvolution:
@@ -616,11 +630,10 @@ GetPreEvolution:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld a, BANK("Evolutions and Attacks")
+	call GetFarWord
 .loop2 ; For each evolution...
-	ld a, [hli]
+	call GetEvosAttacksByteInc
 	and a
 	jr z, .no_evolve ; If we jump, this Pokemon does not evolve into wCurPartySpecies.
 	cp EVOLVE_STAT ; This evolution type has the extra parameter of stat comparison.
@@ -630,10 +643,12 @@ GetPreEvolution:
 .not_tyrogue
 	inc hl
 	ld a, [wCurPartySpecies]
-	cp [hl]
+	ld b, a
+	call GetEvosAttacksByte
+	cp b
 	jr z, .found_preevo
 	inc hl
-	ld a, [hl]
+	call GetEvosAttacksByte
 	and a
 	jr nz, .loop2
 
