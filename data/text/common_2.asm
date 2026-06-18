@@ -1151,7 +1151,7 @@ _MainMenuTimeUnknownText::
 	done
 
 _OakText1::
-	text "Hello! POC build"
+	text "Hello! Sorry to"
 	line "keep you waiting!"
 
 	para "Welcome to the"

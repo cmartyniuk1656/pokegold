@@ -158,6 +158,32 @@ ElmsLookingForYouText:
 	line "you to do some-"
 	cont "thing for him."
 
+	para "Before you go,"
+	line "look at your room!"
+
+	para "It's filthy!"
+	line "You really need"
+	cont "to clean it."
+
+	para "Your sister SUMIN"
+	line "always kept her"
+	cont "room so clean."
+
+	para "I don't know how"
+	line "you live like"
+	cont "this..."
+
+	para "And don't get me"
+	line "started on your"
+	cont "father."
+
+	para "Buying land in"
+	line "KANTO that nobody"
+	cont "even wants..."
+
+	para "What was he"
+	line "thinking?"
+
 	para "Oh! I almost for-"
 	line "got! Your #MON"
 
@@ -174,6 +200,10 @@ MomGivesPokegearText:
 	para "It's essential if"
 	line "you want to be a"
 	cont "good trainer."
+
+	para "It's also good for"
+	line "calling home once"
+	cont "in a while."
 
 	para "Oh, the day of the"
 	line "week isn't set."
@@ -193,6 +223,10 @@ ComeHomeForDSTText:
 
 	para "for Daylight"
 	line "Saving Time."
+
+	para "And maybe clean"
+	line "your room while"
+	cont "you're here."
 
 	para "By the way, do you"
 	line "know how to use"
@@ -222,6 +256,10 @@ InstructionsNextText:
 
 	para "Just choose a name"
 	line "you want to call."
+
+	para "You could call"
+	line "your mother, for"
+	cont "example."
 
 	para "Gee, isn't that"
 	line "convenient?"
