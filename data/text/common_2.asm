@@ -1281,30 +1281,24 @@ _LinkAskTradeForText::
 	done
 
 _WouldYouLikeToSaveTheGameText::
-	text "Would you like to"
-	line "save the game?"
+	text "Save game?"
 	done
 
 _SavingDontTurnOffThePowerText::
-	text "SAVING… DON'T TURN"
-	line "OFF THE POWER."
+	text "SAVING…"
 	done
 
 _SavedTheGameText::
-	text "<PLAYER> saved"
-	line "the game."
+	text "Saved."
 	done
 
 _AlreadyASaveFileText::
-	text "There is already a"
-	line "save file. Is it"
-	cont "OK to overwrite?"
+	text "Overwrite save?"
 	done
 
 _AnotherSaveFileText::
-	text "There is another"
-	line "save file. Is it"
-	cont "OK to overwrite?"
+	text "Overwrite other"
+	line "save?"
 	done
 
 _SaveFileCorruptedText::
@@ -1313,15 +1307,11 @@ _SaveFileCorruptedText::
 	prompt
 
 _ChangeBoxSaveText::
-	text "When you change a"
-	line "#MON BOX, data"
-	cont "will be saved. OK?"
+	text "Save box change?"
 	done
 
 _MoveMonWOMailSaveText::
-	text "Each time you move"
-	line "a #MON, data"
-	cont "will be saved. OK?"
+	text "Save each move?"
 	done
 
 _WindowAreaExceededErrorText:: ; unreferenced
