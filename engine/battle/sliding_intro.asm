@@ -23,6 +23,10 @@ BattleIntroSlidingPics:
 	ldh [hSCX], a
 	inc b
 	inc b
+	inc b
+	inc b
+	dec c
+	dec c
 	dec c
 	dec c
 	jr nz, .loop1
@@ -34,6 +38,8 @@ BattleIntroSlidingPics:
 	ld c, $12 ; 18
 	ld de, OBJ_SIZE
 .loop2
+	dec [hl]
+	dec [hl]
 	dec [hl]
 	dec [hl]
 	add hl, de

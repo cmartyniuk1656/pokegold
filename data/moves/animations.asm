@@ -477,7 +477,7 @@ BattleAnim_SendOutMon:
 	anim_obj BATTLE_ANIM_OBJ_BALL_POOF, 44, 96, $0
 	anim_wait 4
 	anim_bgeffect BATTLE_BG_EFFECT_ENTER_MON, $0, BG_EFFECT_USER, $0
-	anim_wait 32
+	anim_wait 16
 	anim_ret
 
 BattleAnim_ReturnMon:

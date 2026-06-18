@@ -8876,7 +8876,7 @@ BattleStartMessage:
 	call PlaySFX
 	call WaitSFX
 
-	ld c, 20
+	ld c, 5
 	call DelayFrames
 
 	callfar Battle_GetTrainerName
@@ -8930,7 +8930,6 @@ ShowLinkBattleParticipants:
 	ldh [hMapAnims], a
 	call DelayFrame
 	predef DoBattleTransition
-	call _LoadBattleFontsHPBar
 	ld a, $1
 	ldh [hBGMapMode], a
 	call ClearSprites

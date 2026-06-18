@@ -83,12 +83,20 @@ MartAzalea:
 	db -1 ; end
 
 MartCianwood:
-	db 5 ; # items
+	db 13 ; # items
 	db POTION
 	db SUPER_POTION
 	db HYPER_POTION
 	db FULL_HEAL
 	db REVIVE
+	db KINGS_ROCK
+	db DRAGON_SCALE
+	db FIRE_STONE
+	db THUNDERSTONE
+	db WATER_STONE
+	db LEAF_STONE
+	db MOON_STONE
+	db SUN_STONE
 	db -1 ; end
 
 MartGoldenrod2F1:
@@ -215,7 +223,7 @@ MartMahogany1:
 	db -1 ; end
 
 MartMahogany2:
-	db 9 ; # items
+	db 12 ; # items
 	db RAGECANDYBAR
 	db GREAT_BALL
 	db SUPER_POTION
@@ -225,10 +233,13 @@ MartMahogany2:
 	db SUPER_REPEL
 	db REVIVE
 	db FLOWER_MAIL
+	db METAL_COAT
+	db UP_GRADE
+	db BRICK_PIECE
 	db -1 ; end
 
 MartBlackthorn:
-	db 9 ; # items
+	db 16 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
 	db HYPER_POTION
@@ -238,6 +249,13 @@ MartBlackthorn:
 	db MAX_REPEL
 	db X_DEFEND
 	db X_ATTACK
+	db TM_DIG
+	db TM_SLUDGE_BOMB
+	db TM_STEEL_WING
+	db TM_THIEF
+	db TM_PSYCH_UP
+	db TM_RAIN_DANCE
+	db TM_SUNNY_DAY
 	db -1 ; end
 
 MartViridian:

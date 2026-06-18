@@ -2,6 +2,7 @@ DEF CELADONGAMECORNERPRIZEROOM_TM32_COINS    EQU 1500
 DEF CELADONGAMECORNERPRIZEROOM_TM29_COINS    EQU 3500
 DEF CELADONGAMECORNERPRIZEROOM_TM15_COINS    EQU 7500
 DEF CELADONGAMECORNERPRIZEROOM_MR_MIME_COINS EQU 3333
+DEF CELADONGAMECORNERPRIZEROOM_WOBBUFFET_COINS EQU 5555
 DEF CELADONGAMECORNERPRIZEROOM_LITTLE_COINS  EQU 6666
 DEF CELADONGAMECORNERPRIZEROOM_PORYGON_COINS EQU 9999
 
@@ -135,8 +136,9 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	verticalmenu
 	closewindow
 	ifequal 1, .MrMime
-	ifequal 2, .Little
-	ifequal 3, .Porygon
+	ifequal 2, .Wobbuffet
+	ifequal 3, .Little
+	ifequal 4, .Porygon
 	sjump CeladonPrizeRoom_CancelPurchaseScript
 
 .MrMime:
@@ -155,6 +157,24 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	special GameCornerPrizeMonCheckDex
 	givepoke MR__MIME, 15
 	takecoins CELADONGAMECORNERPRIZEROOM_MR_MIME_COINS
+	sjump .loop
+
+.Wobbuffet:
+	checkcoins CELADONGAMECORNERPRIZEROOM_WOBBUFFET_COINS
+	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
+	readvar VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
+	getmonname STRING_BUFFER_3, WOBBUFFET
+	scall CeladonPrizeRoom_askbuy
+	iffalse CeladonPrizeRoom_CancelPurchaseScript
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext CeladonPrizeRoom_HereYouGoText
+	waitbutton
+	setval WOBBUFFET
+	special GameCornerPrizeMonCheckDex
+	givepoke WOBBUFFET, 15
+	takecoins CELADONGAMECORNERPRIZEROOM_WOBBUFFET_COINS
 	sjump .loop
 
 .Little:
@@ -201,8 +221,9 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 4 ; items
+	db 5 ; items
 	db "MR.MIME    {d:CELADONGAMECORNERPRIZEROOM_MR_MIME_COINS}@"
+	db "WOBBUFFET  {d:CELADONGAMECORNERPRIZEROOM_WOBBUFFET_COINS}@"
 	db "LITTLE     {d:CELADONGAMECORNERPRIZEROOM_LITTLE_COINS}@"
 	db "PORYGON    {d:CELADONGAMECORNERPRIZEROOM_PORYGON_COINS}@"
 	db "CANCEL@"

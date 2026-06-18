@@ -1415,6 +1415,12 @@ wMartItem7BCD:: ds 3
 wMartItem8BCD:: ds 3
 wMartItem9BCD:: ds 3
 wMartItem10BCD:: ds 3
+wMartItem11BCD:: ds 3
+wMartItem12BCD:: ds 3
+wMartItem13BCD:: ds 3
+wMartItem14BCD:: ds 3
+wMartItem15BCD:: ds 3
+wMartItem16BCD:: ds 3
 
 NEXTU
 ; town map data
@@ -1784,7 +1790,7 @@ wStateFlags::
 ; bit 7: in scripted movement
 	db
 
-	ds 3
+	ds 1
 
 wBattleResult::
 ; WIN, LOSE, or DRAW
@@ -1798,7 +1804,7 @@ wUsingItemWithSelect:: db
 UNION
 ; mart data
 wCurMartCount:: db
-wCurMartItems:: ds 15
+wCurMartItems:: ds 17
 
 NEXTU
 ; elevator data

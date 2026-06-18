@@ -131,21 +131,21 @@ BattleTransitionJumptable:
 	dw StartTrainerBattle_LoadPokeBallGraphics ; 10
 	dw StartTrainerBattle_SetUpBGMap ; 11
 	dw StartTrainerBattle_Flash ; 12
-	dw StartTrainerBattle_Flash ; 13
-	dw StartTrainerBattle_Flash ; 14
+	dw StartTrainerBattle_SetUpForSpinOutro ; 13
+	dw StartTrainerBattle_SpinToBlack ; 14
 	dw StartTrainerBattle_NextScene ; 15
-	dw StartTrainerBattle_SetUpForSpinOutro ; 16
-	dw StartTrainerBattle_SpinToBlack ; 17
+	dw StartTrainerBattle_NextScene ; 16
+	dw StartTrainerBattle_NextScene ; 17
 
 	; BATTLETRANSITION_NO_CAVE_STRONGER
 	dw StartTrainerBattle_LoadPokeBallGraphics ; 18
 	dw StartTrainerBattle_SetUpBGMap ; 19
 	dw StartTrainerBattle_Flash ; 1a
-	dw StartTrainerBattle_Flash ; 1b
-	dw StartTrainerBattle_Flash ; 1c
+	dw StartTrainerBattle_SetUpForRandomScatterOutro ; 1b
+	dw StartTrainerBattle_SpeckleToBlack ; 1c
 	dw StartTrainerBattle_NextScene ; 1d
-	dw StartTrainerBattle_SetUpForRandomScatterOutro ; 1e
-	dw StartTrainerBattle_SpeckleToBlack ; 1f
+	dw StartTrainerBattle_NextScene ; 1e
+	dw StartTrainerBattle_NextScene ; 1f
 
 	; BATTLETRANSITION_FINISH
 	dw StartTrainerBattle_Finish ; 20
@@ -343,7 +343,6 @@ endr
 	ld a, 1
 	ldh [hBGMapMode], a
 	call DelayFrame
-	call DelayFrame
 	ld hl, wBattleTransitionCounter
 	inc [hl]
 	ret
@@ -351,8 +350,6 @@ endr
 .end
 	ld a, 1
 	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
 	call DelayFrame
 	xor a
 	ldh [hBGMapMode], a
