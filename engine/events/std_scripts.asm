@@ -53,36 +53,10 @@ StdScripts::
 
 PokecenterNurseScript:
 	opentext
-	checktime MORN
-	iftrue .morn
-	checktime DAY
-	iftrue .day
-	checktime NITE
-	iftrue .nite
-	sjump .ok
-
-.morn
-	writetext NurseMornText
-	promptbutton
-	sjump .ok
-
-.day
-	writetext NurseDayText
-	promptbutton
-	sjump .ok
-
-.nite
-	writetext NurseNiteText
-	promptbutton
-	sjump .ok
-
-.ok
 	writetext NurseAskHealText
 	yesorno
 	iffalse .done
 
-	writetext NurseTakePokemonText
-	pause 20
 	turnobject LAST_TALKED, LEFT
 	pause 10
 	special HealParty
@@ -102,17 +76,9 @@ PokecenterNurseScript:
 	iftrue .pokerus
 .no
 	writetext NurseReturnPokemonText
-	pause 20
+	waitbutton
 
 .done
-	writetext NurseGoodbyeText
-
-	turnobject LAST_TALKED, UP
-	pause 10
-	turnobject LAST_TALKED, DOWN
-	pause 10
-
-	waitbutton
 	closetext
 	end
 
