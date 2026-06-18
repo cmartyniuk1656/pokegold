@@ -17,3 +17,4 @@
 - Restrict items in battle only for boss battles
 - Sulim Sprites
 - Chris Battle
+- Sleep to swap night/day

@@ -67,7 +67,7 @@ ElmPhoneCallerScript:
 	ifequal SPECIALCALL_ASSISTANT, .assistant
 	ifequal SPECIALCALL_WEIRDBROADCAST, .rocket
 	ifequal SPECIALCALL_SSTICKET, .gift
-	ifequal SPECIALCALL_MASTERBALL, .gift
+	ifequal SPECIALCALL_MASTERBALL, .masterball
 	writetext ElmPhoneDiscoveredPokerusText
 	specialphonecall SPECIALCALL_NONE
 	end
@@ -92,6 +92,11 @@ ElmPhoneCallerScript:
 
 .gift
 	writetext ElmPhoneGiftText
+	specialphonecall SPECIALCALL_NONE
+	end
+
+.masterball
+	writetext ElmPhoneMasterBallText
 	specialphonecall SPECIALCALL_NONE
 	end
 
