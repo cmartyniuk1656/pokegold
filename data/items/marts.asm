@@ -14,6 +14,7 @@ Marts:
 	dw MartGoldenrod5F2
 	dw MartGoldenrod5F3
 	dw MartGoldenrod5F4
+	dw MartGoldenrodFlowerShop
 	dw MartOlivine
 	dw MartEcruteak
 	dw MartMahogany1
@@ -163,6 +164,19 @@ MartGoldenrod5F4:
 	db TM_ICE_PUNCH
 	db TM_HEADBUTT
 	db TM_ROCK_SMASH
+	db -1 ; end
+
+MartGoldenrodFlowerShop:
+	db 9 ; # items
+	db BERRY
+	db PSNCUREBERRY
+	db PRZCUREBERRY
+	db BURNT_BERRY
+	db ICE_BERRY
+	db BITTER_BERRY
+	db MINT_BERRY
+	db BERRY_JUICE
+	db MYSTERYBERRY
 	db -1 ; end
 
 MartOlivine:
