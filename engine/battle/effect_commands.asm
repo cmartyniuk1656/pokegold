@@ -811,7 +811,7 @@ BattleCommand_CheckObedience:
 
 .Print:
 	call StdBattleTextbox
-	jp .EndDisobedience
+	jr .EndDisobedience
 
 .UseInstead:
 ; Can't use another move if the monster only has one!
@@ -2500,42 +2500,6 @@ EndMoveEffect:
 	ld [hl], a
 	ret
 
-DittoMetalPowder:
-	ld a, MON_SPECIES
-	call BattlePartyAttr
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [hl]
-	jr nz, .got_species
-	ld a, [wTempEnemyMonSpecies]
-
-.got_species
-	cp DITTO
-	ret nz
-
-	push bc
-	call GetOpponentItem
-	ld a, [hl]
-	cp METAL_POWDER
-	pop bc
-	ret nz
-
-	ld a, c
-	srl a
-	add c
-	ld c, a
-	ret nc
-
-	srl b
-	ld a, b
-	and a
-	jr nz, .done
-	inc b
-.done
-	scf
-	rr c
-	ret
-
 BattleCommand_DamageStats:
 	ldh a, [hBattleTurn]
 	and a
@@ -2616,10 +2580,17 @@ PlayerAttackDamage:
 
 .done
 	call TruncateHL_BC
+	callfar CalcDefenderHeldItemDefenseBonus
+	ldh a, [hQuotient + 3]
+	add c
+	ld c, a
+	jr nc, .defense_ok
+	ld c, $ff
+
+.defense_ok
 
 	ld a, [wBattleMonLevel]
 	ld e, a
-	call DittoMetalPowder
 
 	ld a, 1
 	and a
@@ -2843,10 +2814,17 @@ EnemyAttackDamage:
 
 .done
 	call TruncateHL_BC
+	callfar CalcDefenderHeldItemDefenseBonus
+	ldh a, [hQuotient + 3]
+	add c
+	ld c, a
+	jr nc, .defense_ok
+	ld c, $ff
+
+.defense_ok
 
 	ld a, [wEnemyMonLevel]
 	ld e, a
-	call DittoMetalPowder
 
 	ld a, 1
 	and a

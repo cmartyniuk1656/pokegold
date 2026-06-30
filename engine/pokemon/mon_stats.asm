@@ -88,6 +88,11 @@ PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
 	push hl
+	call .ApplyLazerCollarStatBoosts
+	pop hl
+	pop bc
+	push bc
+	push hl
 	ld de, .StatNames
 	call PlaceString
 	pop hl
@@ -99,13 +104,87 @@ PrintTempMonStats:
 	lb bc, 2, 3
 	call .PrintStat
 	ld de, wTempMonDefense
-	call .PrintStat
+	call .PrintBlueCollarStat
 	ld de, wTempMonSpclAtk
 	call .PrintStat
 	ld de, wTempMonSpclDef
 	call .PrintStat
 	ld de, wTempMonSpeed
 	jp PrintNum
+
+.ApplyLazerCollarStatBoosts:
+	ld a, [wTempMonSpecies]
+	cp LITTLE
+	ret nz
+	ld a, [wTempMonItem]
+	cp LAZER_COLLAR
+	ret nz
+	ld a, [wTempMonSpecies]
+	ld [wCurSpecies], a
+	ld [wCurPartySpecies], a
+	call GetBaseData
+	callfar BoostLittleLazerBaseStatsIfTempMon
+	ld a, [wTempMonLevel]
+	ld [wCurPartyLevel], a
+	ld de, wTempMonMaxHP
+	ld hl, wTempMonStatExp - 1
+	ld b, TRUE
+	predef CalcMonStats
+	ret
+
+.PrintBlueCollarStat:
+	ld a, [wTempMonSpecies]
+	cp LITTLE
+	jr nz, .PrintStat
+	ld a, [wTempMonItem]
+	cp BLUE_COLLAR
+	jr nz, .PrintStat
+
+	push bc
+	push hl
+	push de
+	ld a, [de]
+	ld h, a
+	inc de
+	ld a, [de]
+	ld l, a
+	xor a
+	ldh [hMultiplicand + 0], a
+	ld a, h
+	ldh [hMultiplicand + 1], a
+	ld a, l
+	ldh [hMultiplicand + 2], a
+	ld a, 25
+	ldh [hMultiplier], a
+	call Multiply
+	ld a, 100
+	ldh [hDivisor], a
+	ld b, 4
+	call Divide
+	ldh a, [hQuotient + 2]
+	ld b, a
+	ldh a, [hQuotient + 3]
+	ld c, a
+	add hl, bc
+	ld a, l
+	sub LOW(MAX_STAT_VALUE + 1)
+	ld a, h
+	sbc HIGH(MAX_STAT_VALUE + 1)
+	jr c, .not_maxed_out
+	ld hl, MAX_STAT_VALUE
+
+.not_maxed_out
+	ld de, wStringBuffer1
+	ld a, h
+	ld [de], a
+	inc de
+	ld a, l
+	ld [de], a
+	pop de
+	ld de, wStringBuffer1
+	pop hl
+	pop bc
+	jr .PrintStat
 
 .PrintStat:
 	push hl

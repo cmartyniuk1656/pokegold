@@ -1,6 +1,7 @@
 	object_const_def
 	const DAYCARE_GRAMPS
 	const DAYCARE_GRANNY
+	const DAYCARE_LITTLE_BREEDING_TIP
 
 DayCare_MapScripts:
 	def_scene_scripts
@@ -47,9 +48,58 @@ DayCareLadyScript:
 DayCareBookshelf:
 	jumpstd DifficultBookshelfScript
 
+DayCareLittleBreedingTipScript:
+	jumptextfaceplayer DayCareLittleBreedingTipText
+
 Text_GrampsLookingForYou:
 	text "Gramps was looking"
 	line "for you."
+	done
+
+DayCareLittleBreedingTipText:
+	text "Hey! Did you"
+	line "know LITTLE can"
+	cont "only be male?"
+
+	para "That means the"
+	line "only way to breed"
+	cont "one is with DITTO."
+
+	para "You can breed"
+	line "really powerful"
+	cont "LITTLE this way."
+
+	para "He gets EGG"
+	line "moves from his"
+	cont "evolutions."
+
+	para "These are all"
+	line "the EGG moves"
+	cont "he can inherit:"
+
+	para "SPORE, RECOVER,"
+	line "BATON PASS,"
+	cont "GROWTH."
+
+	para "THUNDER WAVE,"
+	line "SPIKES,"
+	cont "HYDRO PUMP."
+
+	para "ICE BEAM,"
+	line "FLAMETHROWER,"
+	cont "DRAGONBREATH."
+
+	para "CRUNCH,"
+	line "MEAN LOOK,"
+	cont "DREAM EATER."
+
+	para "EARTHQUAKE,"
+	line "BELLY DRUM."
+
+	para "I saw some DITTO"
+	line "in the grass"
+	cont "right beside the"
+	cont "DAY-CARE."
 	done
 
 DayCare_MapEvents:
@@ -70,3 +120,4 @@ DayCare_MapEvents:
 	def_object_events
 	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAY_CARE_MAN_IN_DAY_CARE
 	object_event  5,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DayCareLadyScript, -1
+	object_event  7,  5, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DayCareLittleBreedingTipScript, -1

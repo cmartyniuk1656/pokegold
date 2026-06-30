@@ -85,6 +85,82 @@ LoadMapObjects:
 MapSetup_DummyFunction: ; unreferenced
 	ret
 
+MaybeScheduleBlueCollarCall:
+	call .TryBlueCollar
+	ld a, [wSpecialPhoneCallID]
+	and a
+	ret nz
+	jr .TryLazerCollar
+
+.TryBlueCollar:
+	ld de, EVENT_BEAT_WHITNEY
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret z
+
+	ld de, EVENT_GOT_BLUE_COLLAR_FROM_OAKS_AIDE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret nz
+
+	ld de, EVENT_OAK_CALLED_ABOUT_BLUE_COLLAR
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret nz
+
+	ld a, [wSpecialPhoneCallID]
+	and a
+	ret nz
+
+	ld de, EVENT_OAK_CALLED_ABOUT_BLUE_COLLAR
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld a, SPECIALCALL_OAK_BLUE_COLLAR
+	ld [wSpecialPhoneCallID], a
+	xor a
+	ld [wSpecialPhoneCallID + 1], a
+	ret
+
+.TryLazerCollar:
+	ld hl, wJohtoBadges
+	ld b, 1
+	call CountSetBits
+	cp 7
+	ret c
+
+	ld de, EVENT_GOT_LAZER_COLLAR_FROM_ELM
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret nz
+
+	ld de, EVENT_ELM_CALLED_ABOUT_LAZER_COLLAR
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret nz
+
+	ld a, [wSpecialPhoneCallID]
+	and a
+	ret nz
+
+	ld de, EVENT_ELM_CALLED_ABOUT_LAZER_COLLAR
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld a, SPECIALCALL_ELM_LAZER_COLLAR
+	ld [wSpecialPhoneCallID], a
+	xor a
+	ld [wSpecialPhoneCallID + 1], a
+	ret
+
 ResetPlayerObjectAction:
 	ld hl, wPlayerSpriteSetupFlags
 	set PLAYERSPRITESETUP_RESET_ACTION_F, [hl]

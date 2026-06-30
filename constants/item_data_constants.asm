@@ -100,7 +100,12 @@ DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const_next 40
 	const_skip
 	const_skip
-	const HELD_METAL_POWDER
+	const_skip
+	const_skip
+
+DEF HELD_METAL_POWDER EQU $84 ; DITTO
+DEF HELD_BLUE_COLLAR  EQU $85 ; LITTLE
+DEF HELD_LAZER_COLLAR EQU $86 ; LITTLE
 
 	const_next 50
 	const HELD_NORMAL_BOOST

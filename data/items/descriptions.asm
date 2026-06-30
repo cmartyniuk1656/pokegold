@@ -115,8 +115,8 @@ ItemDescriptions:
 	dw EverStoneDesc
 	dw SpellTagDesc
 	dw RageCandyBarDesc
-	dw TeruSama9Desc
-	dw TeruSama10Desc
+	dw BlueCollarDesc
+	dw LazerCollarDesc
 	dw MiracleSeedDesc
 	dw ThickClubDesc
 	dw FocusBandDesc
@@ -703,8 +703,13 @@ RageCandyBarDesc:
 	db   "Restores #MON"
 	next "HP by 20.@"
 
-TeruSama9Desc:
-	db   "?@"
+BlueCollarDesc:
+	db   "For LITTLE. Boosts"
+	next "DEFENSE. (HOLD)@"
+
+LazerCollarDesc:
+	db   "LITTLE's CRAZY"
+	next "MODE. (HOLD)@"
 
 TeruSama10Desc:
 	db   "?@"

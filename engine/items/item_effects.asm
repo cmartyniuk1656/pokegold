@@ -128,8 +128,8 @@ ItemEffects:
 	dw NoEffect            ; EVERSTONE
 	dw NoEffect            ; SPELL_TAG
 	dw RestoreHPEffect     ; RAGECANDYBAR
-	dw NoEffect            ; ITEM_73
-	dw NoEffect            ; ITEM_74
+	dw NoEffect            ; BLUE_COLLAR
+	dw NoEffect            ; LAZER_COLLAR
 	dw NoEffect            ; MIRACLE_SEED
 	dw NoEffect            ; THICK_CLUB
 	dw NoEffect            ; FOCUS_BAND
@@ -1201,6 +1201,7 @@ UpdateStatsAfterItem:
 	ld e, l
 	ld a, MON_STAT_EXP - 1
 	call GetPartyParamLocation
+	callfar BoostLittleLazerBaseStatsIfCurPartyMon
 	ld b, TRUE
 	predef_jump CalcMonStats
 

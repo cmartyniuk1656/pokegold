@@ -6335,6 +6335,13 @@ LoadEnemyMon:
 	ld a, [hl] ; OTPartyMonStatus
 	ld [wEnemyMonStatus], a
 
+; Get happiness from the party struct
+	ld hl, wOTPartyMon1Happiness
+	ld a, [wCurPartyMon]
+	call GetPartyLocation
+	ld a, [hl]
+	ld [wEnemyMonHappiness], a
+
 .Moves:
 	ld hl, wBaseType1
 	ld de, wEnemyMonType1
@@ -7168,6 +7175,7 @@ GiveExperiencePoints:
 	add hl, bc
 	ld a, [hl]
 	ld [wCurSpecies], a
+	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a ; unused?
 	call GetBaseData
 	ld hl, MON_MAXHP + 1
@@ -7183,6 +7191,7 @@ GiveExperiencePoints:
 	ld hl, MON_STAT_EXP - 1
 	add hl, bc
 	push bc
+	callfar BoostLittleLazerBaseStatsIfCurPartyMon
 	ld b, TRUE
 	predef CalcMonStats
 	pop bc

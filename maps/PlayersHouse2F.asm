@@ -107,7 +107,7 @@ PlayersRadioText3:
 
 PlayersRadioText4:
 	text "#MON!"
-	line "#MON CHANNEL…"
+	line "#MON CHANNEL..."
 	done
 
 PlayersHouse2F_MapEvents:

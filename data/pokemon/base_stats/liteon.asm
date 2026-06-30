@@ -1,6 +1,6 @@
 	db LITEON ; 196
 
-	db  65,  55,  60, 110, 145, 100
+	db  85,  55,  70, 110, 145, 100
 	;   hp  atk  def  spd  sat  sdf
 
 	db PSYCHIC_TYPE, PSYCHIC_TYPE ; type

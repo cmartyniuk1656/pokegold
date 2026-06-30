@@ -402,8 +402,21 @@ LaprasEggMoves:
 	db -1 ; end
 
 LittleEggMoves:
-	db FLAIL
-	db CHARM
+	db SPORE
+	db RECOVER
+	db BATON_PASS
+	db GROWTH
+	db THUNDER_WAVE
+	db SPIKES
+	db HYDRO_PUMP
+	db ICE_BEAM
+	db FLAMETHROWER
+	db DRAGONBREATH
+	db CRUNCH
+	db MEAN_LOOK
+	db DREAM_EATER
+	db EARTHQUAKE
+	db BELLY_DRUM
 	db -1 ; end
 
 OmanyteEggMoves:
