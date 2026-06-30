@@ -65,6 +65,7 @@ _ResetWRAM:
 
 	ld hl, wNumItems
 	call .InitList
+IF DEF(_DEBUG)
 	ld a, 1
 	ld [wNumItems], a
 	ld a, RARE_CANDY
@@ -73,6 +74,7 @@ _ResetWRAM:
 	ld [wItems + 1], a
 	ld a, -1
 	ld [wItems + 2], a
+ENDC
 
 	ld hl, wNumKeyItems
 	call .InitList

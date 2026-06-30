@@ -1,6 +1,6 @@
 	db JOLTLE ; 135
 
-	db  65,  55,  60, 135, 125,  95
+	db  85,  55,  70, 135, 125,  95
 	;   hp  atk  def  spd  sat  sdf
 
 	db ELECTRIC, ELECTRIC ; type

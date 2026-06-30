@@ -93,7 +93,7 @@ EvolveAfterBattle_MasterLoop:
 	cp b
 	jp c, .dont_evolve_1
 
-	call IsMonHoldingEverstone
+	call IsMonHoldingEvolutionPreventingItem
 	jp z, .dont_evolve_1
 
 	push hl
@@ -123,7 +123,7 @@ EvolveAfterBattle_MasterLoop:
 	cp HAPPINESS_TO_EVOLVE
 	jp c, .dont_evolve_2
 
-	call IsMonHoldingEverstone
+	call IsMonHoldingEvolutionPreventingItem
 	jp z, .dont_evolve_2
 
 	call GetEvosAttacksByteInc
@@ -149,7 +149,7 @@ EvolveAfterBattle_MasterLoop:
 	and a
 	jp z, .dont_evolve_2
 
-	call IsMonHoldingEverstone
+	call IsMonHoldingEvolutionPreventingItem
 	jp z, .dont_evolve_2
 
 	call GetEvosAttacksByteInc
@@ -175,6 +175,8 @@ EvolveAfterBattle_MasterLoop:
 	ld a, [wCurItem]
 	cp b
 	jp nz, .dont_evolve_3
+	call IsLittleHoldingCollar
+	jp z, .dont_evolve_3
 
 	ld a, [wForceEvolution]
 	and a
@@ -190,7 +192,7 @@ EvolveAfterBattle_MasterLoop:
 	ld a, [wTempMonLevel]
 	cp b
 	jp c, .dont_evolve_3
-	call IsMonHoldingEverstone
+	call IsMonHoldingEvolutionPreventingItem
 	jp z, .dont_evolve_3
 
 .proceed
@@ -387,7 +389,7 @@ CancelEvolution:
 	pop hl
 	jp EvolveAfterBattle_MasterLoop
 
-IsMonHoldingEverstone:
+IsMonHoldingEvolutionPreventingItem:
 	push hl
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Item
@@ -395,6 +397,42 @@ IsMonHoldingEverstone:
 	call AddNTimes
 	ld a, [hl]
 	cp EVERSTONE
+	jr z, .done
+	cp BLUE_COLLAR
+	jr z, .check_little
+	cp LAZER_COLLAR
+	jr nz, .not_holding
+.check_little
+	ld a, [wEvolutionOldSpecies]
+	cp LITTLE
+.done
+	pop hl
+	ret
+
+.not_holding
+	or 1
+	pop hl
+	ret
+
+IsLittleHoldingCollar:
+	push hl
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld a, [hl]
+	cp BLUE_COLLAR
+	jr z, .check_little
+	cp LAZER_COLLAR
+	jr nz, .not_holding
+.check_little
+	ld a, [wEvolutionOldSpecies]
+	cp LITTLE
+	jr .done
+
+.not_holding
+	or 1
+.done
 	pop hl
 	ret
 

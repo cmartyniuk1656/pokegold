@@ -339,6 +339,7 @@ GivePartyItem:
 	call ComposeMailMessage
 
 .done
+	call RecalculateCurPartyMonStatsForHeldItem
 	ret
 
 TakePartyItem:
@@ -360,6 +361,7 @@ TakePartyItem:
 	call GetItemName
 	ld hl, PokemonTookItemText
 	call MenuTextboxBackup
+	call RecalculateCurPartyMonStatsForHeldItem
 	jr .done
 
 .not_holding_item
@@ -372,6 +374,27 @@ TakePartyItem:
 	call MenuTextboxBackup
 
 .done
+	ret
+
+RecalculateCurPartyMonStatsForHeldItem:
+	ld a, [wCurPartySpecies]
+	cp EGG
+	ret z
+	ld [wCurSpecies], a
+	call GetBaseData
+	callfar BoostLittleLazerBaseStatsIfCurPartyMon
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wCurPartyLevel], a
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	ld d, h
+	ld e, l
+	ld a, MON_STAT_EXP - 1
+	call GetPartyParamLocation
+	ld b, TRUE
+	predef CalcMonStats
 	ret
 
 GiveTakeItemMenuData:

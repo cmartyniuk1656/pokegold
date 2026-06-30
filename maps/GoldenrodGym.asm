@@ -32,6 +32,11 @@ GoldenrodGymWhitneyScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_WHITNEY
+	checkevent EVENT_OAK_CALLED_ABOUT_BLUE_COLLAR
+	iftrue .SkipBlueCollarCall
+	setevent EVENT_OAK_CALLED_ABOUT_BLUE_COLLAR
+	specialphonecall SPECIALCALL_OAK_BLUE_COLLAR
+.SkipBlueCollarCall:
 	setevent EVENT_MADE_WHITNEY_CRY
 	setscene SCENE_GOLDENRODGYM_WHITNEY_STOPS_CRYING
 	setevent EVENT_BEAT_BEAUTY_VICTORIA

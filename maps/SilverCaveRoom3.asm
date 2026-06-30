@@ -35,17 +35,47 @@ Red:
 	end
 
 RedSeenText:
-	text "…"
-	line "…"
+	text "You finally caught"
+	line "up..."
+
+	para "I've been all"
+	line "around the world"
+	cont "with LITTLE,"
+
+	para "beating down"
+	line "punks and brats"
+	cont "just like you."
+
+	para "Prepare yourself."
+
+	para "It's time you"
+	line "learned why me"
+	cont "and LITTLE are"
+
+	para "the greatest and"
+	line "most powerful"
+	cont "beings this world"
+	cont "has ever known."
+
+	para "Your days of"
+	line "messing around"
+	cont "are over."
 	done
 
 RedWinLossText:
-	text "…"
+	text "LITTLE..."
 	done
 
 RedLeavesText:
-	text "…"
-	line "…"
+	text "They were right"
+	line "about you..."
+
+	para "All this time..."
+	line "you weren't"
+	cont "messing around..."
+
+	para "Well done,"
+	line "<PLAYER>."
 	done
 
 SilverCaveRoom3_MapEvents:

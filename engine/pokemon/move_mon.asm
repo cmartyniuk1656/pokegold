@@ -166,7 +166,20 @@ endr
 	inc de
 
 	; Initialize stat experience.
+	ld a, [wMonType]
+	cp OTPARTYMON
+	jr nz, .clearStatExp
+	ld a, [wOtherTrainerClass]
+	cp RED
+	jr nz, .clearStatExp
+	ld a, [wOtherTrainerID]
+	cp RED1
+	jr nz, .clearStatExp
+	ld a, $ff
+	jr .fillStatExp
+.clearStatExp
 	xor a
+.fillStatExp
 	ld b, MON_DVS - MON_STAT_EXP
 .loop
 	ld [de], a
@@ -233,7 +246,23 @@ rept NUM_MOVES
 endr
 
 	; Initialize happiness.
+	ld a, [wMonType]
+	cp OTPARTYMON
+	jr nz, .base_happiness
+	ld a, [wOtherTrainerClass]
+	cp RED
+	jr nz, .base_happiness
+	ld a, [wOtherTrainerID]
+	cp RED1
+	jr nz, .base_happiness
+	ld a, [wCurPartySpecies]
+	cp LITTLE
+	jr nz, .base_happiness
+	ld a, $ff
+	jr .got_happiness
+.base_happiness
 	ld a, BASE_HAPPINESS
+.got_happiness
 	ld [de], a
 	inc de
 

@@ -33,6 +33,7 @@ MapSetupScript_Warp:
 	mapsetup EnterMapSpawnPoint
 	mapsetup LoadMapAttributes
 	mapsetup HandleNewMap
+	mapsetup MaybeScheduleBlueCollarCall
 	mapsetup SpawnPlayer
 	mapsetup RefreshPlayerCoords
 	mapsetup GetMapScreenCoords
@@ -56,6 +57,7 @@ MapSetupScript_BadWarp:
 	mapsetup EnterMapSpawnPoint
 	mapsetup LoadMapAttributes
 	mapsetup HandleNewMap
+	mapsetup MaybeScheduleBlueCollarCall
 	mapsetup SpawnPlayer
 	mapsetup RefreshPlayerCoords
 	mapsetup GetMapScreenCoords
@@ -81,6 +83,7 @@ MapSetupScript_Connection:
 	mapsetup EnterMapConnection
 	mapsetup LoadMapAttributes
 	mapsetup HandleNewMap
+	mapsetup MaybeScheduleBlueCollarCall
 	mapsetup RefreshPlayerCoords
 	mapsetup LoadBlockData
 	mapsetup LoadMapTileset
@@ -103,6 +106,7 @@ MapSetupScript_Train:
 	mapsetup LoadMapAttributes
 	mapsetup GetWarpDestCoords
 	mapsetup HandleNewMap
+	mapsetup MaybeScheduleBlueCollarCall
 	mapsetup RefreshPlayerCoords
 	mapsetup LoadBlockData
 	mapsetup BufferScreen
@@ -144,6 +148,7 @@ MapSetupScript_LinkReturn:
 	mapsetup DisableLCD
 	mapsetup InitSound
 	mapsetup HandleNewMap
+	mapsetup MaybeScheduleBlueCollarCall
 	mapsetup LoadBlockData
 	mapsetup BufferScreen
 	mapsetup LoadMapGraphics
@@ -164,6 +169,7 @@ MapSetupScript_Continue:
 	mapsetup LoadMapAttributes_SkipObjects
 	mapsetup GetMapScreenCoords
 	mapsetup HandleContinueMap
+	mapsetup MaybeScheduleBlueCollarCall
 	mapsetup LoadBlockData
 	mapsetup LoadConnectionBlockData
 	mapsetup BufferScreen

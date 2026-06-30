@@ -30,6 +30,7 @@ AzaleaGymBugsyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_HIVEBADGE
+	specialphonecall SPECIALCALL_ELM_EVOLUTION_SECRETS
 	readvar VAR_BADGES
 	scall AzaleaGymActivateRockets
 .FightDone:

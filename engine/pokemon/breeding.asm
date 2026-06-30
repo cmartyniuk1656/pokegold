@@ -182,8 +182,14 @@ DoEggStep::
 	ret z
 	cp EGG
 	jr nz, .next
-	dec [hl]
+	ld a, [hl]
+	sub 4
+	jr c, .egg_ready
+	ld [hl], a
 	jr nz, .next
+.egg_ready
+	xor a
+	ld [hl], a
 	ld a, 1
 	and a
 	ret
@@ -277,6 +283,17 @@ HatchEggs:
 	ld [hli], a
 	ld [hl], a
 	pop hl
+	ld a, [wCurPartySpecies]
+	cp LITTLE
+	jr nz, .not_little
+	push hl
+	ld bc, MON_DVS
+	add hl, bc
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+	pop hl
+.not_little
 	push hl
 	ld bc, MON_STAT_EXP - 1
 	add hl, bc

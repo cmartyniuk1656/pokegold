@@ -131,6 +131,7 @@ INCLUDE "engine/overworld/decorations.asm"
 INCLUDE "engine/battle/read_trainer_dvs.asm"
 INCLUDE "engine/battle/returntobattle_useball.asm"
 INCLUDE "engine/battle/consume_held_item.asm"
+INCLUDE "engine/battle/blue_collar.asm"
 INCLUDE "data/moves/effects.asm"
 
 

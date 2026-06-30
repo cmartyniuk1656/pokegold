@@ -56,6 +56,11 @@ ElmsLabWalkUpToElmScript:
 ProfElmScript:
 	faceplayer
 	opentext
+	checkevent EVENT_GOT_LAZER_COLLAR_FROM_ELM
+	iftrue .CheckTicket
+	checkevent EVENT_ELM_CALLED_ABOUT_LAZER_COLLAR
+	iftrue ElmGiveLazerCollarScript
+.CheckTicket
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
 	iftrue ElmCheckMasterBall
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -378,6 +383,18 @@ ElmGiveTicketScript:
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	writetext ElmGiveTicketText2
 	waitbutton
+	closetext
+	end
+
+ElmGiveLazerCollarScript:
+	writetext ElmGiveLazerCollarText1
+	promptbutton
+	verbosegiveitem LAZER_COLLAR
+	iffalse .NoRoom
+	setevent EVENT_GOT_LAZER_COLLAR_FROM_ELM
+	writetext ElmGiveLazerCollarText2
+	waitbutton
+.NoRoom
 	closetext
 	end
 
@@ -728,7 +745,7 @@ LabWhereGoingText:
 TakeLittleText:
 	text "ELM: You'll take"
 	line "LITTLE, the"
-	cont "evolution #MON?"
+	cont "housecat #MON?"
 	done
 
 TakeTotodileText:
@@ -1084,6 +1101,46 @@ ElmGiveTicketText2:
 
 	para "Give my regards to"
 	line "PROF.OAK in KANTO!"
+	done
+
+ElmGiveLazerCollarText1:
+	text "ELM: <PLAYER>!"
+	line "Good timing."
+
+	para "I called because"
+	line "I've been working"
+	cont "on new tech for"
+	cont "LITTLE."
+
+	para "I want you to"
+	line "test this."
+	done
+
+ElmGiveLazerCollarText2:
+	text "That LAZER COLLAR"
+	line "is a pointer"
+	cont "collar."
+
+	para "It puts LITTLE"
+	line "into CRAZY MODE."
+
+	para "The LAZER shines"
+	line "on its foe, and"
+	cont "LITTLE hunts them"
+	cont "down."
+
+	para "It raises LITTLE's"
+	line "base ATTACK,"
+	cont "SPEED, DEFENSE"
+	cont "and SP.DEF by"
+	cont "50 percent."
+
+	para "Only LITTLE can"
+	line "use it."
+
+	para "It also stops"
+	line "LITTLE from"
+	cont "evolving."
 	done
 
 ElmsLabMonEggText: ; unreferenced

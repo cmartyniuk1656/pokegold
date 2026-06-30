@@ -242,3 +242,47 @@ ElmPhoneGotAholdOfSomethingNeatText:
 
 	para "See you later!"
 	done
+
+ElmPhoneLazerCollarText:
+	text "ELM: <PLAYER>?"
+	line "Can you come to"
+	cont "the lab?"
+
+	para "I've finished"
+	line "new technology"
+	cont "for LITTLE."
+	done
+
+ElmPhoneEvolutionSecretsText:
+	text "ELM: <PLAYER>?"
+	line "By the way..."
+
+	para "CHRIS, the"
+	line "greatest trainer"
+	cont "of all time,"
+
+	para "has unlocked the"
+	line "secrets of #MON"
+	cont "evolution."
+
+	para "#MON that used"
+	line "to need a trade"
+	cont "to evolve"
+
+	para "will now evolve"
+	line "without trading"
+	cont "at the right"
+	cont "level."
+
+	para "Also, #MON that"
+	line "needed to hold"
+	cont "an item while"
+	cont "traded"
+
+	para "can now evolve"
+	line "by just using"
+	cont "the item!"
+
+	para "Isn't CHRIS"
+	line "awesome?!"
+	done

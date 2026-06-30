@@ -1,12 +1,18 @@
 OakPhoneCallerScript:
 	readvar VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_OAK_MT_SILVER, .MtSilver
+	ifequal SPECIALCALL_OAK_BLUE_COLLAR, .BlueCollar
 	writetext OakCallAfter16BadgesText
 	specialphonecall SPECIALCALL_NONE
 	end
 
 .MtSilver:
 	writetext OakCallMtSilverUnlockedText
+	specialphonecall SPECIALCALL_NONE
+	end
+
+.BlueCollar:
+	writetext OakCallBlueCollarText
 	specialphonecall SPECIALCALL_NONE
 	end
 
@@ -75,4 +81,22 @@ OakCallMtSilverUnlockedText:
 
 	para "Be careful."
 	line "And good luck!"
+	done
+
+OakCallBlueCollarText:
+	text "Hello, <PLAYER>?"
+	line "This is PROF.OAK!"
+
+	para "I heard you earned"
+	line "the PLAINBADGE."
+
+	para "I have something"
+	line "for your LITTLE."
+
+	para "Please meet my"
+	line "AIDE in GOLDENROD"
+	cont "#MON CENTER."
+
+	para "He will explain"
+	line "everything there."
 	done

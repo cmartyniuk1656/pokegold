@@ -1052,6 +1052,13 @@ DebugRoom_SavePokemon:
 	call YesNoBox
 	ret c
 	call DebugRoom_UpdateExpForLevel
+	ld a, [wDebugRoomMonSpecies]
+	cp LITTLE
+	jr nz, .not_little
+	ld a, $ff
+	ld [wDebugRoomMonDVs], a
+	ld [wDebugRoomMonDVs + 1], a
+.not_little
 	ld a, [wDebugRoomMonBox]
 	dec a
 	ld b, a
